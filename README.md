@@ -1,6 +1,7 @@
-![alt text](https://github.com/OpenApprenticeFoundation/openapprentice-website/logofinal-foundation.png "OpenApprentice Magpie Foundation Logo")
+![OpenApprenticeFoundationLogo](/images/openapprentice-foundation-logo.png)
 
-#The OpenApprentice Foundation
+
+# The OpenApprentice Foundation
 [![GitHub last commit](https://img.shields.io/github/last-commit/OpenApprenticeFoundation/openapprentice-website.svg)](https://github.com/OpenApprenticeFoundation/openapprentice-website/commits/master)
 [![GitHub commit activity the past week, 4 weeks, year](https://img.shields.io/github/commit-activity/w/OpenApprenticeFoundation/openapprentice-website.svg)](https://github.com/OpenApprenticeFoundation/openapprentice-website/commits/master)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
@@ -20,33 +21,32 @@ We believe that when workers have options and know they have options within and 
 
 ## The OpenApprentice Website
 
-Please find our website at https://www.openapprentice.org
+[OpenApprenticeFoundation's Website](https://www.openapprentice.org)
 
-Our Twitter at https://twitter.com/open_apprentice
+[OpenApprentice's Twitter](https://twitter.com/open_apprentice)
 
-Our Github at https://github.com/OpenApprenticeFoundation
-
+[OpenApprentice Foundation's Github](https://github.com/OpenApprenticeFoundation)
 
 
 ## You can help - contributing to OpenApprentice
 
 We are looking for people who share a similar vision and want to help:
 
-+Do you want to teach others a subject that you are passionate about?
-+Are you a Python developer for web or data science that has a lot or a little free time to help?
-+Have you built a Rasa based chatbot?
-+Are you a teacher of mathematics?
-+Do you have an interest in developing or have skills using blockchain technology?
-+Do you know Vue?
++ Do you want to teach others a subject that you are passionate about?
++ Are you a Python developer for web or data science that has a lot or a little free time to help?
++ Have you built a Rasa based chatbot?
++ Are you a teacher of mathematics?
++ Do you have an interest in developing or have skills using blockchain technology?
++ Do you know Vue?
 
 The above are certain skills we need teachers, people who want experience in doing, and supervisors who can "look over the shoulder and QC/instruct" in these areas.
 
 
 ## What we are building
 
-+The OpenApprentice.org website itself - current progress can be followed here: https://github.com/OpenApprenticeFoundation/openapprentice-website - this is a Python Flask based website using Vue.
-+The teaching module - many experts in many technical fields are willing to teach others. A methodology on how to teach and the software to implement such a method is being adopted here in oA. We are finishing plans for a upgradable, self-adapting and personalized teaching module to helps students learn any given skill at the exact level of knowledge they require to become competent in that skill. We are solving the problem of tutorials, books, courses and instruction that is either too advanced or too basic for the exact student studying at that exact moment in their career and education. This is in the final planning stages.
-+A highly integrated chatbot using the Open Source Rasa stack. Consider this chatbot to be at once guide, problem solver, and communications agent.  The rasa chat platform can be found at this link: https://rasa.com/products/rasa-stack/
++ The OpenApprentice.org website itself - current progress can be followed here: https://github.com/OpenApprenticeFoundation/openapprentice-website - this is a Python Flask based website using Vue.
++ The teaching module - many experts in many technical fields are willing to teach others. A methodology on how to teach and the software to implement such a method is being adopted here in oA. We are finishing plans for a upgradable, self-adapting and personalized teaching module to helps students learn any given skill at the exact level of knowledge they require to become competent in that skill. We are solving the problem of tutorials, books, courses and instruction that is either too advanced or too basic for the exact student studying at that exact moment in their career and education. This is in the final planning stages.
++ A highly integrated chatbot using the Open Source Rasa stack. Consider this chatbot to be at once guide, problem solver, and communications agent.  The rasa chat platform can be found at this link: https://rasa.com/products/rasa-stack/
 
 
 ## Code of Conduct
@@ -61,7 +61,7 @@ Founded in April 2018 to accomplish the aforementioned goals, and definitely not
 
 ## License
 
-GNU General Public License v3.0 - found here: https://github.com/OpenApprenticeFoundation/openapprentice-website/blob/master/LICENSE
+[GNU General Public License v3.0](https://github.com/OpenApprenticeFoundation/openapprentice-website/blob/master/LICENSE)
 
 
 
