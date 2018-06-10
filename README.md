@@ -1,4 +1,4 @@
-![OpenApprenticeFoundationLogo](/images/openapprentice-foundation-logo.png)
+![OpenApprenticeFoundationLogo](/openapprentice/static/images/openapprentice-foundation-logo.png)
 
 
 # The OpenApprentice Foundation

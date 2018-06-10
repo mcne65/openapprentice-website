@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>OpenApprentice</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="OpenApprentice">
+    <meta name="author" content="OpenApprentice Foundation">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/main.css") }}">
+
+    <link rel="icon" href="images/favicon.png">
+</head>
+
+{% block navbar %}
+  <div class="navigation-bar">
+
+    <div id="navigation-container">
+      <ul>
+        <li><a href="{{ url_for("home") }}"><img src="{{ url_for("static", filename="images/logo-square.png") }}" width="70" height="70" alt="OpenApprentice"></a></li>
+        <li><a href="{{ url_for("learning") }}">Learning</a></li>
+        <li><a href="{{ url_for("recruiters") }}">Recruiters</a></li>
+        <li><a href="{{ url_for("about") }}">About</a></li>
+        <li><a href="{{ url_for("contact_us") }}">Contact us</a></li>
+        <li><a href="#">Search</a></li>
+      </ul>
+    </div>
+{% endblock %}
+
+
+{% block body %}
+
+{% endblock %}
+{% block Footer %}
+    <div class="bottom-right"> Made with ❤️ in Paris by OpenApprentice</div>
+{% endblock %}
