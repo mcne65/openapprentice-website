@@ -18,6 +18,7 @@ def validate_email(form, field):
 
 
 class ContactForm(FlaskForm):
+    # @todo: Add a checkbox to send a copy of the message
     first_name = StringField('First Name', [validators.InputRequired()])
     last_name = StringField('Last Name', [validators.InputRequired()])
     email = StringField('Email Address', [validators.InputRequired(), validators.Email(), validate_email])
