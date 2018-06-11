@@ -3,6 +3,7 @@ from flask import render_template, redirect, url_for
 from openapprentice import application
 from ..forms import contact
 
+
 @application.route('/index')
 @application.route('/home')
 @application.route('/main')
