@@ -15,6 +15,11 @@ def home():
     return render_template("main.html")
 
 
+@application.route("/apprentice_system")
+def apprentice_system():
+    return render_template("apprentice_system.html")
+
+
 @application.route("/learning")
 def learning():
     return render_template("learning.html")
@@ -25,9 +30,19 @@ def recruiters():
     return render_template("recruiters.html")
 
 
-@application.route("/about")
-def about():
-    return render_template("about.html")
+@application.route("/teachers")
+def teachers():
+    return render_template("teachers.html")
+
+
+@application.route("/sponsors")
+def sponsors():
+    return render_template("sponsors.html")
+
+
+@application.route("/mission")
+def mission():
+    return render_template("mission.html")
 
 
 @application.route("/team")

@@ -10,23 +10,32 @@
     <meta name="author" content="OpenApprentice Foundation">
 
     <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/main.css") }}">
+    <link rel="stylesheet" href="css/footer/animate.css">
+    <link rel="stylesheet" href="css/footer/style.css">
+    <link rel="stylesheet" href="css/footer/media-queries.css">
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
     <link rel="icon" href="images/favicon.png">
 </head>
 
 {% block navbar %}
-  <div class="navigation-bar">
+    <div class="navigation-bar">
 
     <div id="navigation-container">
-      <ul>
-        <li><a href="{{ url_for("home") }}"><img src="{{ url_for("static", filename="images/logo-square.png") }}" width="70" height="70" alt="OpenApprentice"></a></li>
-        <li><a href="{{ url_for("learning") }}">Learning</a></li>
-        <li><a href="{{ url_for("recruiters") }}">Recruiters</a></li>
-        <li><a href="{{ url_for("about") }}">About</a></li>
-        <li><a href="{{ url_for("team") }}">The Team</a></li>
-        <li><a href="{{ url_for("contact_us") }}">Contact us</a></li>
-        <li><a href="#">Search</a></li>
-      </ul>
+        <ul>
+            <li><a href="{{ url_for("home") }}"><img src="{{ url_for("static", filename="images/logo-square.png") }}" width="70" height="70" alt="OpenApprentice"></a></li>
+            <li><a href="{{ url_for("home") }}">Home</a></li>
+            <li><a href="{{ url_for("apprentice_system") }}">Apprentice System</a></li>
+            <li><a href="{{ url_for("learning") }}">Learning Path</a></li>
+            <li><a href="{{ url_for("teachers") }}">For Teachers</a></li>
+            <li><a href="{{ url_for("sponsors") }}">For Patrons & Sponsors</a></li>
+            <li><a href="{{ url_for("recruiters") }}">For Recruiters</a></li>
+            <li><a href="{{ url_for("mission") }}">Our mission</a></li>
+            <li><a href="{{ url_for("team") }}">The Team</a></li>
+            <!-- <li><a href="#">Search</a></li> -->
+        </ul>
     </div>
 {% endblock %}
 
@@ -34,6 +43,65 @@
 {% block body %}
 
 {% endblock %}
-{% block Footer %}
-    <div class="bottom-right"> Made with ❤️ in Paris by OpenApprentice</div>
+{% block footer %}
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 footer-about wow fadeInUp">
+                        <img class="logo-footer" src="{{ url_for("static", filename="images/favicon.png") }}" alt="logo-footer" data-at2x="assets/img/logo.png">
+                        <p>
+                            LOREM IPSUM THIS IS WHAT WE DO.
+                        </p>
+                        <p><a href="{{ url_for("team") }}">Our Team</a></p>
+                    </div>
+                    <div class="col-md-4 offset-md-1 footer-contact wow fadeInDown">
+                        <h3>Contact</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Paris 75000 France</p>
+                        <!--<p><i class="fas fa-phone"></i> Phone: (0039) 333 12 68 347</p>-->
+                        <p><i class="fas fa-envelope"></i> Email: <a href="mailto:OpenApprenticeFoundation@gmail.com">OpenApprenticeFoundation@gmail.com</a></p>
+                        <!--<p><i class="fab fa-skype"></i> Skype: you_online</p>-->
+                    </div>
+                    <div class="col-md-4 footer-links wow fadeInUp">
+                        <div class="row">
+                            <div class="col">
+                                <h3>Links</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><a class="scroll-link" href="#top-content">Home</a></p>
+                                <p><a href="{{ url_for("apprentice_system") }}">Apprentice System</a></p>
+                                <p><a href="{{ url_for("learning") }}">Learning Path</a></p>
+                                <p><a href="{{ url_for("teachers") }}">For Teachers</a></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><a href="{{ url_for("sponsors") }}">For Patrons & Sponsors</a></p>
+                                <p><a href="{{ url_for("recruiters") }}">For Recruiters</a></p>
+                                <p><a href="{{ url_for("mission") }}">Our mission</a></p>
+                                <!-- <p><a href="{{ url_for("team") }}">Terms & Privacy</a></p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 footer-copyright">
+                        Made with ❤️ in Paris by <a href="https://openapprentice.org">The OpenApprentice Foundation</a>. <a href="{{ url_for("contact_us") }}">Contact us</a>
+                    </div>
+                    <div class="col-md-6 footer-social">
+                        <!-- <a href="#"><i class="fab fa-facebook-f"></i></a> -->
+                        <a href="https://twitter.com/open_apprentice"><i class="fab fa-twitter"></i></a>
+                        <!-- <a href="#"><i class="fab fa-google-plus-g"></i></a> -->
+                        <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
+                        <!-- <a href="#"><i class="fab fa-pinterest"></i></a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 {% endblock %}
