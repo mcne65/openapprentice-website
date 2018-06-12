@@ -30,6 +30,11 @@ def about():
     return render_template("about.html")
 
 
+@application.route("/team")
+def team():
+    return render_template("team.html")
+
+
 @application.route('/ContactUs', methods=['GET', 'POST'])
 def contact_us():
     form = contact.ContactForm()
