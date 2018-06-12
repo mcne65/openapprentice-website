@@ -1,4 +1,0 @@
-Flask
-flask_wtf
-wtforms
-flask_mail
