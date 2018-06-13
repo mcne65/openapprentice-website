@@ -2,7 +2,7 @@
 <html lang="en">
 {% block head %}
     <head>
-        <title>Admin dashboard</title>
+        <title>{{ gettext('Admin dashboard') }}</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -34,6 +34,62 @@
                 }
                 .row.content {height: auto;}
             }
+
+
+            .languagepicker {
+                background-color: #FFF;
+                display: inline-block;
+                padding: 0;
+                height: 40px;
+                overflow: hidden;
+                transition: all .3s ease;
+                margin: 0 50px 10px 0;
+                vertical-align: top;
+                float: left;
+            }
+
+            .languagepicker:hover {
+                /* don't forget the 1px border */
+                height: 81px;
+            }
+
+            .languagepicker a{
+                color: #000;
+                text-decoration: none;
+            }
+
+            .languagepicker li {
+                display: block;
+                padding: 0px 20px;
+                line-height: 40px;
+                border-top: 1px solid #EEE;
+            }
+
+            .languagepicker li:hover{
+                background-color: #EEE;
+            }
+
+            .languagepicker a:first-child li {
+                border: none;
+                background: #FFF !important;
+            }
+
+            .languagepicker li img {
+                margin-right: 5px;
+            }
+
+            .roundborders {
+                border-radius: 5px;
+            }
+
+            .large:hover {
+                /*
+                don't forget the 1px border!
+                The first language is 40px heigh,
+                the others are 41px
+                */
+                height: 245px;
+            }
         </style>
     </head>
 {% endblock %}
@@ -53,27 +109,43 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="{{ url_for("admin_dashboard") }}">Admin Dashboard <i class="fas fa-tachometer-alt"></i></a>
+                            <a class="navbar-brand" href="{{ url_for("admin_dashboard") }}">{{ gettext('Admin dashboard') }} <i class="fas fa-tachometer-alt"></i></a>
                         </div>
                         <div id="navbar" class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
                                 <!-- Add an item to the left of the top navbar -->
                                 <!-- <li class="active"><a href="#">Home</a></li> -->
-                                <li><a href="{{ url_for("new_user") }}"><i class="fas fa-user-plus"></i> New user</a></li>
+                                <li><a href="{{ url_for("new_user") }}"><i class="fas fa-user-plus"></i> {{ gettext('New user') }}</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <!-- Add an item to the right of the top navbar -->
                                 <!-- <li class="active"><a href="#">Home</a></li> -->
                                 <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ gettext('Languages') }}<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        {% if g.current_lang == "en" %}
+                                            <li class="active"><a href="#"></a><i class="flag-icon flag-icon-gb"></i></li>
+                                            <li><a href="#"></a><i class="flag-icon flag-icon-fr"></i></li>
+                                        {% elif g.current_lang == "fr" %}
+                                            <li><a href="#"></a><i class="flag-icon flag-icon-gb"></i></li>
+                                            <li class="active"><a href="#"></a><i class="flag-icon flag-icon-fr"></i></li>
+                                        {% endif %}
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ current_user.email }} <i class="fas fa-user"></i> <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{ url_for("home") }}">Exit dashboard</a></li>
-                                        <li><a href="{{ url_for("logout") }}">Logout</a></li>
+                                        <li><a href="{{ url_for("home") }}">{{ gettext('Exit dashboard') }}</a></li>
+                                        <li><a href="{{ url_for("logout") }}">{{ gettext('Logout') }}</a></li>
                                         <!-- <li role="separator" class="divider"></li> -->
                                         <!-- <li class="dropdown-header">Nav header</li> -->
                                         <!-- <li><a href="#">Separated link</a></li> -->
                                     </ul>
                                 </li>
+                                <ul class="languagepicker roundborders large">
+                                    <a href="#fr"><li><img src="http://i65.tinypic.com/300b30k.png"/>Français</li></a>
+                                    <a href="#en"><li><img src="http://i64.tinypic.com/fd60km.png"/>English</li></a>
+                                </ul>
                             </ul>
                         </div><!--/.nav-collapse -->
                     </div>
@@ -83,17 +155,16 @@
             {% block sidenav %}
                 <div class="col-sm-3 sidenav">
                     <ul class="nav nav-pills nav-stacked">
-                        <li><a href="{{ url_for("admin_dashboard") }}">Home <i class="fas fa-home"></i></a></li>
-                        <li><a href="{{ url_for("user_list") }}">Users <i class="fas fa-users"></i></a></li>
-                        <li><a href="{{ url_for("projects") }}">Projects <i class="fas fa-project-diagram"></i></a></li>
-                        <li><a href="{{ url_for("stats") }}">Stats <i class="fas fa-chart-bar"></i></a></li>
+                        <li><a href="{{ url_for("admin_dashboard") }}">{{ gettext('Home') }} <i class="fas fa-home"></i></a></li>
+                        <li><a href="{{ url_for("user_list") }}">{{ gettext('Users') }} <i class="fas fa-users"></i></a></li>
+                        <li><a href="{{ url_for("projects") }}">{{ gettext('Projects') }} <i class="fas fa-project-diagram"></i></a></li>
+                        <li><a href="{{ url_for("stats") }}">{{ gettext('Stats') }} <i class="fas fa-chart-bar"></i></a></li>
                     </ul><br>
                 </div>
             {% endblock %}
 
             {% block body %}
                 <div class="col-sm-9">
-                    Content
                 </div>
             {% endblock %}
 
@@ -105,7 +176,7 @@
 
 {% block footer %}
     <footer class="container-fluid">
-        <p>Made with ❤️ in Paris by <a href="https://openapprentice.org" target="_blank">The OpenApprentice Foundation</a>. <a href="{{ url_for("contact_us") }}">Contact us</a></p>
+        <p>{{ gettext('Made with ❤️ in Paris by') }} <a href="https://openapprentice.org" target="_blank">{{ gettext('The OpenApprentice Foundation') }}</a>. <a href="{{ url_for("contact_us") }}">{{ gettext('Contact us') }}</a></p>
     </footer>
 {% endblock %}
 </html>

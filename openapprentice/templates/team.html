@@ -1,106 +1,104 @@
 {% extends "main.html" %}
 {% block body %}
 
-<style>
-html {
-  box-sizing: border-box;
-}
+    <style>
+        html {
+            box-sizing: border-box;
+        }
 
-*, *:before, *:after {
-  box-sizing: inherit;
-}
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
 
-.column {
-  float: left;
-  width: 33.3%;
-  margin-bottom: 16px;
-  padding: 0 8px;
-}
+        .column {
+            float: left;
+            width: 33.3%;
+            margin-bottom: 16px;
+            padding: 0 8px;
+        }
 
-@media screen and (max-width: 650px) {
-  .column {
-    width: 100%;
-    display: block;
-  }
-}
+        @media screen and (max-width: 650px) {
+            .column {
+                width: 100%;
+                display: block;
+            }
+        }
 
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
 
-.container {
-  padding: 0 16px;
-}
+        .container {
+            padding: 0 16px;
+        }
 
-.container::after, .row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
+        .container::after, .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
 
-.title {
-  color: grey;
-}
+        .title {
+            color: grey;
+        }
 
-.button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-}
+        .button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+        }
 
-.button:hover {
-  background-color: #555;
-}
-</style>
+        .button:hover {
+            background-color: #555;
+        }
+    </style>
     {# @todo: Replace contact button with social buttons like linkedin, github etc #}
-<h2>Meet the team</h2>
-<br>
+    <h2>{{ gettext('Meet the team') }}</h2>
+    <br>
 
-<div class="row">
-  <div class="column">
-    <div class="card">
-      <img src="{{ url_for("static", filename="images/david-kartuzinski.jpeg") }}" alt="David" style="width:100%">
-      <div class="container">
-        <h2>David Kartuzinski</h2>
-        <p class="title">TBD</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>David@Kaidawei.me</p>
-        <p><button class="button">Contact</button></p>
-      </div>
-    </div>
-  </div>
+    <div class="row">
+        <div class="column">
+            <div class="card">
+                <img src="{{ url_for("static", filename="images/david-kartuzinski.jpeg") }}" alt="David" style="width:100%">
+                <div class="container">
+                    <h2>David Kartuzinski</h2>
+                    <p class="title">{{ gettext('TBD') }}</p>
+                    <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                    <p>David@Kaidawei.me</p>
+                    <p><button class="button">Contact</button></p>
+                </div>
+            </div>
+        </div>
 
-  <div class="column">
-    <div class="card">
-      <img src="{{ url_for("static", filename="images/jules-lasne.jpeg") }}" alt="Jules" style="width:100%">
-      <div class="container">
-        <h2>Jules Lasne</h2>
-        <p class="title">TBD</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>jules.lasne@gmail.com</p>
-        <p><button class="button">Contact</button></p>
-      </div>
+        <div class="column">
+            <div class="card">
+                <img src="{{ url_for("static", filename="images/jules-lasne.jpeg") }}" alt="Jules" style="width:100%">
+                <div class="container">
+                    <h2>Jules Lasne</h2>
+                    <p class="title">{{ gettext('TBD') }}</p>
+                    <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                    <p>jules.lasne@gmail.com</p>
+                    <p><button class="button">Contact</button></p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <img src="{{ url_for("static", filename="images/akashk-roy.jpg") }}" alt="Roy" style="width:100%">
+                <div class="container">
+                    <h2>Akash Roy</h2>
+                    <p class="title">{{ gettext('DevOps') }}</p>
+                    <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                    <p>AkashkRoy0@gmail.com</p>
+                    <p><button class="button">Contact</button></p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <img src="{{ url_for("static", filename="images/akashk-roy.jpg") }}" alt="Roy" style="width:100%">
-      <div class="container">
-        <h2>Akash Roy</h2>
-        <p class="title">DevOps</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>AkashkRoy0@gmail.com</p>
-        <p><button class="button">Contact</button></p>
-      </div>
-    </div>
-  </div>
-</div>
-    {# @todo: Fix the `made with love in Paris`  #}
-    {# @boy: The text is showing too far up in the teams page #}
 {% endblock %}

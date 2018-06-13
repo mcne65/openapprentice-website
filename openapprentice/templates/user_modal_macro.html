@@ -45,128 +45,136 @@
                 <div class="modal-body" style="overflow-x:auto;">
                     <table class="center">
                         <tr>
-                            <th>Entry</th>
-                            <th>Value</th>
+                            <th>{{ gettext("Entry") }}</th>
+                            <th>{{ gettext("Value") }}</th>
                         </tr>
                         <tr>
-                            <td>User identifier</td>
-                            <td>{{ user.uuid}}</td>
+                            <td>{{ gettext("User identifier") }}</td>
+                            <td>{{ user.uuid }}</td>
                         </tr>
                         <tr>
-                            <td>User's email</td>
-                            <td>{{ user.email}}</td>
+                            <td>{{ gettext("User's email") }}</td>
+                            <td>{{ user.email }}</td>
                         </tr>
                         <tr>
-                            <td>User's scope</td>
-                            <td>{{ user.scope}}</td>
+                            <td>{{ gettext("User's scope") }}</td>
+                            <td>{{ user.scope }}</td>
                         </tr>
                         <tr>
-                            <td>Is the user confirmed</td>
-                            <td>{{ user.is_confirmed}}</td>
+                            <td>{{ gettext("Is the user confirmed") }}</td>
+                            <td>{{ user.is_confirmed }}</td>
                         </tr>
                         <tr>
-                            <td>Is the user logged in</td>
-                            <td>{{ user.is_authenticated}}</td>
+                            <td>{{ gettext("Is the user logged in") }}</td>
+                            <td>{{ user.is_authenticated }}</td>
                         </tr>
                         <tr>
-                            <td>Last time the user logged in</td>
-                            <td>{{ user.last_access_date}}</td>
+                            <td>{{ gettext("Last time the user logged in") }}</td>
+                            <td>{{ user.last_access_date }}</td>
                         </tr>
                         <tr>
-                            <td>Last time the user was modified</td>
-                            <td>{{ user.last_modified}}</td>
+                            <td>{{ gettext("The user's prefered locale") }}</td>
+                            <td>{{ user.locale }}</td>
                         </tr>
                         <tr>
-                            <td>Who confirmed the user</td>
-                            <td>{{ user.confirmed_by}}</td>
+                            <td>{{ gettext("The user's prefered timezone") }}</td>
+                            <td>{{ user.timezone }}</td>
                         </tr>
                         <tr>
-                            <td>When was the user confirmed</td>
-                            <td>{{ user.confirmed_on}}</td>
+                            <td>{{ gettext("Last time the user was modified") }}</td>
+                            <td>{{ user.last_modified }}</td>
                         </tr>
                         <tr>
-                            <td>When was the user created ?</td>
-                            <td>{{ user.creation_date}}</td>
+                            <td>{{ gettext("Who confirmed the user") }}</td>
+                            <td>{{ user.confirmed_by }}</td>
                         </tr>
                         <tr>
-                            <td>User access count</td>
-                            <td>{{ user.access_count}}</td>
+                            <td>{{ gettext("When was the user confirmed") }}</td>
+                            <td>{{ user.confirmed_on }}</td>
                         </tr>
                         <tr>
-                            <td>Does the user have access to the API</td>
-                            <td>{{ user.has_api_access}}</td>
+                            <td>{{ gettext("When was the user created ?") }}</td>
+                            <td>{{ user.creation_date }}</td>
                         </tr>
                         <tr>
-                            <td>the user's coach</td>
-                            <td>{{ user.coach}}</td>
+                            <td>{{ gettext("User access count") }}</td>
+                            <td>{{ user.access_count }}</td>
                         </tr>
                         <tr>
-                            <td>The user's username</td>
-                            <td>{{ user.username}}</td>
+                            <td>{{ gettext("Does the user have access to the API") }}</td>
+                            <td>{{ user.has_api_access }}</td>
                         </tr>
                         <tr>
-                            <td>The user's first name</td>
-                            <td>{{ user.first_name}}</td>
+                            <td>{{ gettext("the user's coach") }}</td>
+                            <td>{{ user.coach }}</td>
                         </tr>
                         <tr>
-                            <td>The user's last name</td>
-                            <td>{{ user.last_name}}</td>
+                            <td>{{ gettext("The user's username") }}</td>
+                            <td>{{ user.username }}</td>
                         </tr>
                         <tr>
-                            <td>The user's birthday</td>
-                            <td>{{ user.birthday}}</td>
+                            <td>{{ gettext("The user's first name") }}</td>
+                            <td>{{ user.first_name }}</td>
                         </tr>
                         <tr>
-                            <td>The user's phone number</td>
-                            <td>{{ user.phone_number}}</td>
+                            <td>{{ gettext("The user's last name") }}</td>
+                            <td>{{ user.last_name }}</td>
                         </tr>
                         <tr>
-                            <td>The user's gender</td>
-                            <td>{{ user.gender}}</td>
+                            <td>{{ gettext("The user's birthday") }}</td>
+                            <td>{{ user.birthday }}</td>
                         </tr>
                         <tr>
-                            <td>The user's position</td>
-                            <td>{{ user.position}}</td>
+                            <td>{{ gettext("The user's phone number") }}</td>
+                            <td>{{ user.phone_number }}</td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td>{{ user.extra_info}}</td>
+                            <td>{{ gettext("The user's gender") }}</td>
+                            <td>{{ user.gender }}</td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td>{{ user.website}}</td>
+                            <td>{{ gettext("The user's position") }}</td>
+                            <td>{{ user.position }}</td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td>{{ user.linkedin}}</td>
+                            <td>{{ gettext("Extra information on the user") }}</td>
+                            <td>{{ user.extra_info }}</td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td>{{ user.twitter}}</td>
+                            <td>{{ gettext("The user's personal website") }}</td>
+                            <td>{{ user.website }}</td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td>{{ user.github}}</td>
+                            <td>{{ gettext("The user's LinkedIn") }}</td>
+                            <td>{{ user.linkedin }}</td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td>{{ user.gitlab}}</td>
+                            <td>{{ gettext("The user's Twitter") }}</td>
+                            <td>{{ user.twitter }}</td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td>{{ user.bitbucket}}</td>
+                            <td>{{ gettext("The user's GitHub") }}</td>
+                            <td>{{ user.github }}</td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td>{{ user.cloudforge}}</td>
+                            <td>{{ gettext("The user's GitLab") }}</td>
+                            <td>{{ user.gitlab }}</td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td>{{ user.stackoverflow}}</td>
+                            <td>{{ gettext("The user's BitBucket") }}</td>
+                            <td>{{ user.bitbucket }}</td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td>{{ user.devrant}}</td>
+                            <td>{{ gettext("The user's CloudForge") }}</td>
+                            <td>{{ user.cloudforge }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ gettext("The user's StackOverflow") }}</td>
+                            <td>{{ user.stackoverflow }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ gettext("The user's DevRant") }}</td>
+                            <td>{{ user.devrant }}</td>
                         </tr>
                     </table>
                 </div>

@@ -27,17 +27,17 @@
         <div id="navigation-container">
             <ul>
                 <li><a href="{{ url_for("home") }}"><img src="{{ url_for("static", filename="images/logo-square.png") }}" width="70" height="70" alt="OpenApprentice"></a></li>
-                <li><a href="{{ url_for("home") }}">Home</a></li>
-                <li><a href="{{ url_for("apprentice_system") }}">Apprentice System</a></li>
-                <li><a href="{{ url_for("learning") }}">Learning Path</a></li>
-                <li><a href="{{ url_for("teachers") }}">For Teachers</a></li>
-                <li><a href="{{ url_for("sponsors") }}">For Patrons & Sponsors</a></li>
-                <li><a href="{{ url_for("recruiters") }}">For Recruiters</a></li>
-                <li><a href="{{ url_for("mission") }}">Our mission</a></li>
+                <li><a href="{{ url_for("home") }}">{{ gettext('Home') }}</a></li>
+                <li><a href="{{ url_for("apprentice_system") }}">{{ gettext('Apprentice System') }}</a></li>
+                <li><a href="{{ url_for("learning") }}">{{ gettext('Learning Path') }}</a></li>
+                <li><a href="{{ url_for("teachers") }}">{{ gettext('For Teachers') }}</a></li>
+                <li><a href="{{ url_for("sponsors") }}">{{ gettext('For Patrons & Sponsors') }}</a></li>
+                <li><a href="{{ url_for("recruiters") }}">{{ gettext('For Recruiters') }}</a></li>
+                <li><a href="{{ url_for("mission") }}">{{ gettext('Our mission') }}</a></li>
                 {% if current_user.is_authenticated %}
-                    <li><a href="{{ url_for("logout") }}">Logout</a></li>
+                    <li><a href="{{ url_for("logout") }}">{{ gettext('Logout') }}</a></li>
                 {% else %}
-                    <li><a href="{{ url_for("login") }}">Login</a></li>
+                    <li><a href="{{ url_for("login") }}">{{ gettext('Login') }}</a></li>
                 {% endif %}
                 <!-- <li><a href="#">Search</a></li> -->
             </ul>
@@ -62,7 +62,7 @@
                         <p>
                             LOREM IPSUM THIS IS WHAT WE DO.
                         </p>
-                        <p><a href="{{ url_for("team") }}">Our Team</a></p>
+                        <p><a href="{{ url_for("team") }}">{{ gettext('Our Team') }}</a></p>
                     </div>
                     <div class="col-md-4 offset-md-1 footer-contact wow fadeInDown">
                         <h3>Contact</h3>
@@ -74,21 +74,21 @@
                     <div class="col-md-4 footer-links wow fadeInUp">
                         <div class="row">
                             <div class="col">
-                                <h3>Links</h3>
+                                <h3>{{ gettext('Links') }}</h3>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <p><a class="scroll-link" href="#top-content">Home</a></p>
-                                <p><a href="{{ url_for("apprentice_system") }}">Apprentice System</a></p>
-                                <p><a href="{{ url_for("learning") }}">Learning Path</a></p>
-                                <p><a href="{{ url_for("teachers") }}">For Teachers</a></p>
+                                <p><a class="scroll-link" href="#top-content">{{ gettext('Home') }}</a></p>
+                                <p><a href="{{ url_for("apprentice_system") }}">{{ gettext('Apprentice System') }}</a></p>
+                                <p><a href="{{ url_for("learning") }}">{{ gettext('Learning Path') }}</a></p>
+                                <p><a href="{{ url_for("teachers") }}">{{ gettext('For Teachers') }}</a></p>
                             </div>
                             <div class="col-md-6">
-                                <p><a href="{{ url_for("sponsors") }}">For Patrons & Sponsors</a></p>
-                                <p><a href="{{ url_for("recruiters") }}">For Recruiters</a></p>
-                                <p><a href="{{ url_for("mission") }}">Our mission</a></p>
-                                <p><a href="{{ url_for("contact_us") }}">Contact Us</a></p>
+                                <p><a href="{{ url_for("sponsors") }}">{{ gettext('For Patrons & Sponsors') }}</a></p>
+                                <p><a href="{{ url_for("recruiters") }}">{{ gettext('For Recruiters') }}</a></p>
+                                <p><a href="{{ url_for("mission") }}">{{ gettext('Our mission') }}</a></p>
+                                <p><a href="{{ url_for("contact_us") }}">{{ gettext('Contact us') }}</a></p>
                                 <!-- <p><a href="{{ url_for("team") }}">Terms & Privacy</a></p> -->
                             </div>
                         </div>
@@ -100,7 +100,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 footer-copyright">
-                        Made with ❤️ in Paris by <a href="https://openapprentice.org" target="_blank">The OpenApprentice Foundation</a>. <a href="{{ url_for("contact_us") }}">Contact us</a>
+                        {{ gettext('Made with ❤️ in Paris by') }} <a href="https://openapprentice.org" target="_blank">{{ gettext('The OpenApprentice Foundation') }}</a>. <a href="{{ url_for("contact_us") }}">{{ gettext('Contact us') }}</a>
                     </div>
                     <div class="col-md-6 footer-social">
                         <!-- <a href="#"><i class="fab fa-facebook-f"></i></a> -->

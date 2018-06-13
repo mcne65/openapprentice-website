@@ -90,6 +90,16 @@ class User(peewee.Model):
         help_text="Is the user currently logged in ?",
         verbose_name="Is authenticated"
     )
+    locale = CharField(
+        default="en",
+        help_text="The user's prefered locale",
+        verbose_name="Prefered locale"
+    )
+    timezone = CharField(
+        default="UTC",
+        help_text="The user's timezone",
+        verbose_name="Timezone"
+    )
 
     # Optional
     username = CharField(
@@ -175,7 +185,7 @@ class User(peewee.Model):
     )
     website = CharField(
         null=True,
-        help_text="User's personal webiste",
+        help_text="User's personal website",
         verbose_name="Personal Website"
     )
 
@@ -185,6 +195,7 @@ class User(peewee.Model):
 
 
 def create_user(email, password, scope):
+    # @todo: Make is so user can specify his timezone and locale when registering
     hashed_password = generate_password_hash(password, method='sha256')
 
     return User.create(
@@ -203,6 +214,8 @@ def create_user(email, password, scope):
         last_modified=datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S'),
         access_count=0,
         is_authenticated=False,
+        locale="en",
+        timezone="UTC",
         username=None,
         first_name=None,
         last_name=None,
@@ -257,6 +270,8 @@ def get_user_dict(user):
     data['username'] = user.username
     data['uuid'] = user.uuid
     data['website'] = user.website
+    data['locale'] = user.locale
+    data['timezone'] = user.timezone
     return data
 
 
@@ -304,6 +319,8 @@ class UserLoginFlask(UserMixin):
         self.username = user.username
         self.uuid = user.uuid
         self.website = user.website
+        self.locale = user.locale
+        self.timezone = user.timezone
 
     def __repr__(self):
         """
@@ -390,4 +407,3 @@ def _reset_db():
     user.confirmed_by = "admin"
     user.username = "Administrator"
     user.save()
-

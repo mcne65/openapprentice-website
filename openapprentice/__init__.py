@@ -3,7 +3,7 @@ import os
 import peewee
 from flask import Flask
 from flask_mail import Mail
-
+from flask_babel import Babel
 
 if "OA_GMAIL_PASSWORD" not in os.environ:
     raise EnvironmentError("OA_GMAIL_PASSWORD should be set with the password for the email used to send emails.")
@@ -36,5 +36,7 @@ user_db = peewee.MySQLDatabase(
     password=os.environ.get("OA_DB_PASSWD", None),
     user=os.environ.get("OA_DB_USER", "root")
 )
+babel = Babel(application)
+
 
 from routes import main

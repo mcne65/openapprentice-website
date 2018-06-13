@@ -6,3 +6,4 @@ mysqlclient
 flask-login
 peewee
 werkzeug
+Flask-Babel

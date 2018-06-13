@@ -13,6 +13,7 @@ def setup_logging():
                         format='%(asctime)s,%(msecs)d %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s',
                         datefmt='%d-%m-%Y:%H:%M:%S')
 
+    logging.getLogger("peewee").setLevel(logging.WARNING)
     # Send a message to flash that the server (re)starts.
     logging.info("************************************************************")
     logging.info("*********Starting new instance of OpenApprentice************")
