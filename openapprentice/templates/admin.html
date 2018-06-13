@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+    <head>
+        <title>Admin dashboard</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <style>
+            /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+            .row.content {height: 1500px}
+
+            /* Set gray background color and 100% height */
+            .sidenav {
+                background-color: #f1f1f1;
+                height: 100%;
+            }
+
+            /* Set black background color, white text and some padding */
+            footer {
+                background-color: #555;
+                color: white;
+                padding: 15px;
+            }
+
+            /* On small screens, set height to 'auto' for sidenav and grid */
+            @media screen and (max-width: 767px) {
+                .sidenav {
+                    height: auto;
+                    padding: 15px;
+                }
+                .row.content {height: auto;}
+            }
+        </style>
+    </head>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row content">
+
+            {% block topnav %}
+                <!-- Static navbar -->
+                <nav class="navbar navbar-default navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="{{ url_for("admin_dashboard") }}">Admin Dashboard <i class="fas fa-tachometer-alt"></i></a>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <!-- Add an item to the left of the top navbar -->
+                                <!-- <li class="active"><a href="#">Home</a></li> -->
+                                <li><a href="{{ url_for("new_user") }}"><i class="fas fa-user-plus"></i> New user</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <!-- Add an item to the right of the top navbar -->
+                                <!-- <li class="active"><a href="#">Home</a></li> -->
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ current_user.email }} <i class="fas fa-user"></i> <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ url_for("home") }}">Exit dashboard</a></li>
+                                        <li><a href="{{ url_for("logout") }}">Logout</a></li>
+                                        <!-- <li role="separator" class="divider"></li> -->
+                                        <!-- <li class="dropdown-header">Nav header</li> -->
+                                        <!-- <li><a href="#">Separated link</a></li> -->
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div><!--/.nav-collapse -->
+                    </div>
+                </nav>
+            {% endblock %}
+
+            {% block sidenav %}
+                <div class="col-sm-3 sidenav">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="{{ url_for("admin_dashboard") }}">Home <i class="fas fa-home"></i></a></li>
+                        <li><a href="{{ url_for("user_list") }}">Users <i class="fas fa-users"></i></a></li>
+                        <li><a href="{{ url_for("projects") }}">Projects <i class="fas fa-project-diagram"></i></a></li>
+                        <li><a href="{{ url_for("stats") }}">Stats <i class="fas fa-chart-bar"></i></a></li>
+                    </ul><br>
+                </div>
+            {% endblock %}
+
+            {% block body %}
+                <div class="col-sm-9">
+                    Content
+                </div>
+            {% endblock %}
+
+        </div>
+    </div>
+{% endblock %}
+
+
+
+{% block footer %}
+    <footer class="container-fluid">
+        <p>Made with ❤️ in Paris by <a href="https://openapprentice.org" target="_blank">The OpenApprentice Foundation</a>. <a href="{{ url_for("contact_us") }}">Contact us</a></p>
+    </footer>
+{% endblock %}
+</html>

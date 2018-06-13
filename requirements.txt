@@ -2,3 +2,7 @@ Flask
 flask_wtf
 wtforms
 flask_mail
+mysqlclient
+flask-login
+peewee
+werkzeug

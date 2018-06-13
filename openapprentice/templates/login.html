@@ -1,0 +1,64 @@
+{% extends "main.html" %}
+{% block head %}
+<title>OpenApprentice Login</title>
+{% endblock %}
+{% block body %}
+    {% if session['logged_in'] %}
+        <p>You're logged in already!</p>
+    {% else %}
+        {% from "_formhelpers.html" import render_field %}
+            <form method=post>
+                <div class="login">
+                    <div class="login-screen">
+                        <div class="app-title">
+                            <h1>Login</h1>
+                        </div>
+                        <div class="login-form">
+                            {{ render_field(form.email) }}
+                            {{ render_field(form.password) }}
+                            <button type="button" id="eye">
+                                <img src="https://cdn0.iconfinder.com/data/icons/feather/96/eye-16.png" alt="eye" />
+                            </button>
+                            {# {{ render_field(form.recaptcha) }} #}
+                            {{ form.csrf_token }}
+                        </div>
+                        <p><input type=submit value=Login class="btn-login">
+                        <br>
+                    </div>
+                </div>
+            </form>
+            <form action="/register" method="GET">
+                <input type="submit" value="Register" class="btn-register" >
+            </form>
+
+            <script type="text/javascript">
+            function show() {
+                var p = document.getElementById('password');
+                p.setAttribute('type', 'text');
+            }
+
+            function hide() {
+                var p = document.getElementById('password');
+                p.setAttribute('type', 'password');
+            }
+
+            var pwShown = 0;
+
+            document.getElementById("eye").addEventListener("click", function () {
+                if (pwShown == 0) {
+                    pwShown = 1;
+                    show();
+                } else {
+                    pwShown = 0;
+                    hide();
+                }
+            }, false);
+            </script>
+    {% endif %}
+{% endblock %}
+
+<!--     <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p> -->
+<!--     <label>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+    </label>
+-->

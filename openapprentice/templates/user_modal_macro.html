@@ -1,0 +1,196 @@
+{% macro user_modal(uuid, user) -%}
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            text-align: center;
+            vertical-align: center;
+        }
+        th, td {
+            padding: 15px;
+        }
+        tr:nth-child(even){background-color: #f2f2f2;}
+
+        tr:hover {background-color: #ddd;}
+        th {
+            background-color: #69139d;
+            color: white;
+        }
+        /* Important part */
+        .modal-dialog{
+            overflow-y: initial !important
+        }
+        .modal-body{
+            height: 500px;
+            overflow-y: auto;
+        }
+    </style>
+    <div id="modal_{{ uuid }}" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    {% if user.username %}
+                        <h4 class="modal-title">{{ user.username }}</h4>
+                    {% else %}
+                        <h4 class="modal-title">{{ user.email }}</h4>
+                    {% endif %}
+                </div>
+                <div class="modal-body" style="overflow-x:auto;">
+                    <table class="center">
+                        <tr>
+                            <th>Entry</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>User identifier</td>
+                            <td>{{ user.uuid}}</td>
+                        </tr>
+                        <tr>
+                            <td>User's email</td>
+                            <td>{{ user.email}}</td>
+                        </tr>
+                        <tr>
+                            <td>User's scope</td>
+                            <td>{{ user.scope}}</td>
+                        </tr>
+                        <tr>
+                            <td>Is the user confirmed</td>
+                            <td>{{ user.is_confirmed}}</td>
+                        </tr>
+                        <tr>
+                            <td>Is the user logged in</td>
+                            <td>{{ user.is_authenticated}}</td>
+                        </tr>
+                        <tr>
+                            <td>Last time the user logged in</td>
+                            <td>{{ user.last_access_date}}</td>
+                        </tr>
+                        <tr>
+                            <td>Last time the user was modified</td>
+                            <td>{{ user.last_modified}}</td>
+                        </tr>
+                        <tr>
+                            <td>Who confirmed the user</td>
+                            <td>{{ user.confirmed_by}}</td>
+                        </tr>
+                        <tr>
+                            <td>When was the user confirmed</td>
+                            <td>{{ user.confirmed_on}}</td>
+                        </tr>
+                        <tr>
+                            <td>When was the user created ?</td>
+                            <td>{{ user.creation_date}}</td>
+                        </tr>
+                        <tr>
+                            <td>User access count</td>
+                            <td>{{ user.access_count}}</td>
+                        </tr>
+                        <tr>
+                            <td>Does the user have access to the API</td>
+                            <td>{{ user.has_api_access}}</td>
+                        </tr>
+                        <tr>
+                            <td>the user's coach</td>
+                            <td>{{ user.coach}}</td>
+                        </tr>
+                        <tr>
+                            <td>The user's username</td>
+                            <td>{{ user.username}}</td>
+                        </tr>
+                        <tr>
+                            <td>The user's first name</td>
+                            <td>{{ user.first_name}}</td>
+                        </tr>
+                        <tr>
+                            <td>The user's last name</td>
+                            <td>{{ user.last_name}}</td>
+                        </tr>
+                        <tr>
+                            <td>The user's birthday</td>
+                            <td>{{ user.birthday}}</td>
+                        </tr>
+                        <tr>
+                            <td>The user's phone number</td>
+                            <td>{{ user.phone_number}}</td>
+                        </tr>
+                        <tr>
+                            <td>The user's gender</td>
+                            <td>{{ user.gender}}</td>
+                        </tr>
+                        <tr>
+                            <td>The user's position</td>
+                            <td>{{ user.position}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>{{ user.extra_info}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>{{ user.website}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>{{ user.linkedin}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>{{ user.twitter}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>{{ user.github}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>{{ user.gitlab}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>{{ user.bitbucket}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>{{ user.cloudforge}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>{{ user.stackoverflow}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>{{ user.devrant}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <!--
+                    <button type="button" class="btn btn-danger" id="button-delete-{{ user.client_id }}" onclick="var r = confirm('Are you sure you want to delete {{ user.username }} ({{ user.client_id }})?');if (r == true){window.location.replace('/users/delete/{{ user.client_id }}');}">Delete
+                        <img src="{{ url_for('static', filename='assets/delete.svg')}}" alt="delete"/>
+                    </button>
+                    {% if user.scope != "admin" %}
+                        <button type="button" class="btn btn-warning" id="button-promote-{{ user.client_id }}" onclick="window.location.replace('/users/promote/{{ user.client_id }}');">Promote
+                            <img src="{{ url_for('static', filename='assets/promote.svg')}}" alt="promote" width="50" height="50"/>
+                        </button>
+                    {% endif %}
+                    <button type="button" class="btn btn-info" id="button-edit-{{ user.client_id }}" onclick="window.location.replace('/users/edit/{{ user.client_id }}');">Edit
+                        <img src="{{ url_for('static', filename='assets/edit.svg')}}" alt="edit"/>
+                    </button>
+                    <button type="button" class="btn btn-info" id="button-edit-scopes-{{ user.client_id }}" onclick="window.location.replace('/edit_scope/{{ user.client_id }}');">Edit Scope
+                        <img src="{{ url_for('static', filename='assets/edit_scope.svg')}}" alt="edit"/>
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+{%- endmacro %}

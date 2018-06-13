@@ -1,48 +1,56 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <title>OpenApprentice</title>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="OpenApprentice">
-    <meta name="author" content="OpenApprentice Foundation">
+{% block head %}
+    <head>
+        <title>OpenApprentice</title>
 
-    <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/main.css") }}">
-    <link rel="stylesheet" href="css/footer/animate.css">
-    <link rel="stylesheet" href="css/footer/style.css">
-    <link rel="stylesheet" href="css/footer/media-queries.css">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="OpenApprentice">
+        <meta name="author" content="OpenApprentice Foundation">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
-    <link rel="icon" href="images/favicon.png">
-</head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/main.css") }}">
+        <link rel="stylesheet" href="{{ url_for("static", filename="css/footer/style.css") }}">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+        <link rel="icon" href="images/favicon.png">
+    </head>
+{% endblock %}
 
 {% block navbar %}
     <div class="navigation-bar">
 
-    <div id="navigation-container">
-        <ul>
-            <li><a href="{{ url_for("home") }}"><img src="{{ url_for("static", filename="images/logo-square.png") }}" width="70" height="70" alt="OpenApprentice"></a></li>
-            <li><a href="{{ url_for("home") }}">Home</a></li>
-            <li><a href="{{ url_for("apprentice_system") }}">Apprentice System</a></li>
-            <li><a href="{{ url_for("learning") }}">Learning Path</a></li>
-            <li><a href="{{ url_for("teachers") }}">For Teachers</a></li>
-            <li><a href="{{ url_for("sponsors") }}">For Patrons & Sponsors</a></li>
-            <li><a href="{{ url_for("recruiters") }}">For Recruiters</a></li>
-            <li><a href="{{ url_for("mission") }}">Our mission</a></li>
-            <li><a href="{{ url_for("team") }}">The Team</a></li>
-            <!-- <li><a href="#">Search</a></li> -->
-        </ul>
+        <div id="navigation-container">
+            <ul>
+                <li><a href="{{ url_for("home") }}"><img src="{{ url_for("static", filename="images/logo-square.png") }}" width="70" height="70" alt="OpenApprentice"></a></li>
+                <li><a href="{{ url_for("home") }}">Home</a></li>
+                <li><a href="{{ url_for("apprentice_system") }}">Apprentice System</a></li>
+                <li><a href="{{ url_for("learning") }}">Learning Path</a></li>
+                <li><a href="{{ url_for("teachers") }}">For Teachers</a></li>
+                <li><a href="{{ url_for("sponsors") }}">For Patrons & Sponsors</a></li>
+                <li><a href="{{ url_for("recruiters") }}">For Recruiters</a></li>
+                <li><a href="{{ url_for("mission") }}">Our mission</a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for("logout") }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for("login") }}">Login</a></li>
+                {% endif %}
+                <!-- <li><a href="#">Search</a></li> -->
+            </ul>
+        </div>
     </div>
 {% endblock %}
 
-
 {% block body %}
 
+
+
 {% endblock %}
+
 {% block footer %}
     <!-- Footer -->
     <footer>
@@ -80,6 +88,7 @@
                                 <p><a href="{{ url_for("sponsors") }}">For Patrons & Sponsors</a></p>
                                 <p><a href="{{ url_for("recruiters") }}">For Recruiters</a></p>
                                 <p><a href="{{ url_for("mission") }}">Our mission</a></p>
+                                <p><a href="{{ url_for("contact_us") }}">Contact Us</a></p>
                                 <!-- <p><a href="{{ url_for("team") }}">Terms & Privacy</a></p> -->
                             </div>
                         </div>
@@ -106,3 +115,4 @@
         </div>
     </footer>
 {% endblock %}
+</html>
