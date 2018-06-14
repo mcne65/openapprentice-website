@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-06-13 21:02+0200\n"
+"POT-Creation-Date: 2018-06-14 08:24+0200\n"
 "PO-Revision-Date: 2018-06-13 21:03+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -18,52 +18,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: openapprentice/templates/admin.html:5 openapprentice/templates/admin.html:56
+#: openapprentice/templates/admin.html:5
+#: openapprentice/templates/admin.html:112
 msgid "Admin dashboard"
 msgstr "Tableau d'administration"
 
-#: openapprentice/templates/admin.html:62
+#: openapprentice/templates/admin.html:118
 msgid "New user"
 msgstr "Nouvel utilisateur"
 
-#: openapprentice/templates/admin.html:70
+#: openapprentice/templates/admin.html:126
 msgid "Exit dashboard"
 msgstr "Quitter"
 
-#: openapprentice/templates/admin.html:71 openapprentice/templates/main.html:38
+#: openapprentice/templates/admin.html:127
+#: openapprentice/templates/main.html:95
 msgid "Logout"
 msgstr "Deconnexion"
 
-#: openapprentice/templates/admin.html:86 openapprentice/templates/main.html:30
-#: openapprentice/templates/main.html:82
+#: openapprentice/templates/admin.html:150
+#: openapprentice/templates/main.html:87 openapprentice/templates/main.html:139
 msgid "Home"
 msgstr "Maison"
 
-#: openapprentice/templates/admin.html:87
+#: openapprentice/templates/admin.html:151
 msgid "Users"
 msgstr "Utilisateurs"
 
-#: openapprentice/templates/admin.html:88
+#: openapprentice/templates/admin.html:152
 msgid "Projects"
 msgstr "Projets"
 
-#: openapprentice/templates/admin.html:89
+#: openapprentice/templates/admin.html:153
 msgid "Stats"
 msgstr "Stats"
 
-#: openapprentice/templates/admin.html:107
-#: openapprentice/templates/main.html:103
+#: openapprentice/templates/admin.html:171
+#: openapprentice/templates/main.html:160
 msgid "Made with ❤️ in Paris by"
 msgstr "Fait avec ❤ a Paris par"
 
-#: openapprentice/templates/admin.html:107
-#: openapprentice/templates/main.html:103
+#: openapprentice/templates/admin.html:171
+#: openapprentice/templates/main.html:160
 msgid "The OpenApprentice Foundation"
 msgstr "La Fondation OpenApprentice"
 
-#: openapprentice/templates/admin.html:107
+#: openapprentice/templates/admin.html:171
 #: openapprentice/templates/contact.html:8
-#: openapprentice/templates/main.html:91 openapprentice/templates/main.html:103
+#: openapprentice/templates/main.html:148
+#: openapprentice/templates/main.html:160
 msgid "Contact us"
 msgstr "Nous contacter"
 
@@ -71,7 +74,7 @@ msgstr "Nous contacter"
 msgid "OpenApprentice Login"
 msgstr "Connexion OpenApprentice"
 
-#: openapprentice/templates/login.html:11 openapprentice/templates/main.html:40
+#: openapprentice/templates/login.html:11 openapprentice/templates/main.html:97
 msgid "Login"
 msgstr "Connexion"
 
@@ -85,35 +88,35 @@ msgstr "Connexion "
 msgid "Register"
 msgstr "S'enregister"
 
-#: openapprentice/templates/main.html:31 openapprentice/templates/main.html:83
+#: openapprentice/templates/main.html:88 openapprentice/templates/main.html:140
 msgid "Apprentice System"
 msgstr "Systeme d'Appprentice"
 
-#: openapprentice/templates/main.html:32 openapprentice/templates/main.html:84
+#: openapprentice/templates/main.html:89 openapprentice/templates/main.html:141
 msgid "Learning Path"
 msgstr "Chemin d'apprentissage"
 
-#: openapprentice/templates/main.html:33 openapprentice/templates/main.html:85
+#: openapprentice/templates/main.html:90 openapprentice/templates/main.html:142
 msgid "For Teachers"
 msgstr "Pour les profs"
 
-#: openapprentice/templates/main.html:34 openapprentice/templates/main.html:88
+#: openapprentice/templates/main.html:91 openapprentice/templates/main.html:145
 msgid "For Patrons & Sponsors"
 msgstr "Pour les supporteurs"
 
-#: openapprentice/templates/main.html:35 openapprentice/templates/main.html:89
+#: openapprentice/templates/main.html:92 openapprentice/templates/main.html:146
 msgid "For Recruiters"
 msgstr "Pour les recruteurs"
 
-#: openapprentice/templates/main.html:36 openapprentice/templates/main.html:90
+#: openapprentice/templates/main.html:93 openapprentice/templates/main.html:147
 msgid "Our mission"
 msgstr "Notre mission"
 
-#: openapprentice/templates/main.html:65
+#: openapprentice/templates/main.html:122
 msgid "Our Team"
 msgstr "Notre Equipe"
 
-#: openapprentice/templates/main.html:77
+#: openapprentice/templates/main.html:134
 msgid "Links"
 msgstr "Liens"
 
@@ -173,10 +176,6 @@ msgstr "L'utilisateur est t'il enregistre"
 msgid "Last time the user logged in"
 msgstr "Derniere connexion de l'utilisateur"
 
-#: openapprentice/templates/user_modal_macro.html:73
-msgid "{{ user.last_access_date }}"
-msgstr ""
-
 #: openapprentice/templates/user_modal_macro.html:76
 msgid "The user's prefered locale"
 msgstr "Langue preferee de l'utilisateur"
@@ -216,10 +215,6 @@ msgstr "coach de l'utilisateur"
 #: openapprentice/templates/user_modal_macro.html:112
 msgid "The user's username"
 msgstr "Pseudo de l'utilisateur"
-
-#: openapprentice/templates/user_modal_macro.html:113
-msgid "{{ user.username }}"
-msgstr ""
 
 #: openapprentice/templates/user_modal_macro.html:116
 msgid "The user's first name"
@@ -284,4 +279,3 @@ msgstr "StackOverflow de l'utilisateur"
 #: openapprentice/templates/user_modal_macro.html:176
 msgid "The user's DevRant"
 msgstr "DevRant de l'utilisateur"
-

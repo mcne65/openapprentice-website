@@ -3,7 +3,7 @@ import uuid
 from flask import render_template, redirect, url_for, session, request, abort, g
 from flask_login import LoginManager, logout_user, login_required, login_user, current_user
 
-from openapprentice import application, babel
+from openapprentice import application, babel, AVAILABLE_LANG
 from openapprentice.forms import contact
 from openapprentice.forms.login import LoginForm, RegistrationForm
 from openapprentice.utils import generate_email, send_email, is_safe_url
@@ -223,6 +223,12 @@ def new_user():
     return "HI"
 
 
+@application.route("/lang/<lang>")
+def change_lang(lang):
+    session['lang'] = lang
+    return redirect(request.referrer or url_for("home"))
+
+
 @babel.localeselector
 def get_locale():
     """Direct babel to use the language defined in the session."""
@@ -233,9 +239,10 @@ def get_locale():
 def before():
     user = current_user
     if user.is_anonymous and not user.is_authenticated:
-        g.current_lang = request.accept_languages.best_match(['fr', 'en'])
+        g.current_lang = session.get("lang")
     else:
-        g.current_lang = user.locale
+        g.current_lang = session.get("lang") or user.locale
+    g.available_lang = AVAILABLE_LANG
 
 
 # @todo: Make it so email template can be translated too

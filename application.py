@@ -1,7 +1,7 @@
 import os
 import logging
 from logging import DEBUG
-
+from flask import g
 from openapprentice import application
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))

@@ -1,9 +1,12 @@
 import os
 
 import peewee
-from flask import Flask
+from flask import Flask, g
 from flask_mail import Mail
 from flask_babel import Babel
+from decouple import config
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 if "OA_GMAIL_PASSWORD" not in os.environ:
     raise EnvironmentError("OA_GMAIL_PASSWORD should be set with the password for the email used to send emails.")
@@ -14,6 +17,11 @@ if "OA_DB_USER" not in os.environ:
 if "OA_DB_PASSWD" not in os.environ:
     raise EnvironmentError("OA_DB_PASSWD should be set with the password used to access the DB")
 
+
+if not os.path.exists(BASE_DIR + "/settings.ini"):
+    raise EnvironmentError("file settings.ini not found ! {}".format(BASE_DIR + "/../settings.ini"))
+
+AVAILABLE_LANG = config('available', default="en", cast=str).split(",")
 
 SECRET_KEY = 'ThisIsADevelopmentKey'
 DEBUG = True
@@ -36,6 +44,7 @@ user_db = peewee.MySQLDatabase(
     password=os.environ.get("OA_DB_PASSWD", None),
     user=os.environ.get("OA_DB_USER", "root")
 )
+
 babel = Babel(application)
 
 

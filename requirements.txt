@@ -7,3 +7,4 @@ flask-login
 peewee
 werkzeug
 Flask-Babel
+python-decouple

@@ -121,18 +121,6 @@
                                 <!-- Add an item to the right of the top navbar -->
                                 <!-- <li class="active"><a href="#">Home</a></li> -->
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ gettext('Languages') }}<span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        {% if g.current_lang == "en" %}
-                                            <li class="active"><a href="#"></a><i class="flag-icon flag-icon-gb"></i></li>
-                                            <li><a href="#"></a><i class="flag-icon flag-icon-fr"></i></li>
-                                        {% elif g.current_lang == "fr" %}
-                                            <li><a href="#"></a><i class="flag-icon flag-icon-gb"></i></li>
-                                            <li class="active"><a href="#"></a><i class="flag-icon flag-icon-fr"></i></li>
-                                        {% endif %}
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ current_user.email }} <i class="fas fa-user"></i> <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="{{ url_for("home") }}">{{ gettext('Exit dashboard') }}</a></li>
@@ -143,8 +131,12 @@
                                     </ul>
                                 </li>
                                 <ul class="languagepicker roundborders large">
-                                    <a href="#fr"><li><img src="http://i65.tinypic.com/300b30k.png"/>Français</li></a>
-                                    <a href="#en"><li><img src="http://i64.tinypic.com/fd60km.png"/>English</li></a>
+                                        <a href="/lang/{{ g.current_lang }}"><li><img src="/static/images/flag-{{ g.current_lang }}.png"/>{{ g.current_lang }}</li></a>
+                                    {% for lang in g.available_lang %}
+                                        {% if lang != g.current_lang %}
+                                            <a href="/lang/{{ lang }}"><li><img src="/static/images/flag-{{ lang }}.png"/>{{ lang }}</li></a>
+                                        {% endif %}
+                                    {% endfor %}
                                 </ul>
                             </ul>
                         </div><!--/.nav-collapse -->
