@@ -6,6 +6,7 @@ from flask_login import LoginManager, logout_user, login_required, login_user, c
 from openapprentice import application, babel, AVAILABLE_LANG
 from openapprentice.forms import contact
 from openapprentice.forms.login import LoginForm, RegistrationForm
+from openapprentice.forms.user import NewUserForm
 from openapprentice.utils import generate_email, send_email, is_safe_url
 from openapprentice.models.user import User, UserLoginFlask, get_user, create_user
 from openapprentice.errors import notfound
@@ -218,11 +219,6 @@ def stats():
     return render_template("stats.html")
 
 
-@application.route("/admin/new_user")
-def new_user():
-    return "HI"
-
-
 @application.route("/lang/<lang>")
 def change_lang(lang):
     session['lang'] = lang
@@ -237,12 +233,40 @@ def get_locale():
 
 @application.before_request
 def before():
-    user = current_user
-    if user.is_anonymous and not user.is_authenticated:
+    if current_user.is_anonymous and not current_user.is_authenticated:
         g.current_lang = session.get("lang")
     else:
-        g.current_lang = session.get("lang") or user.locale
+        g.current_lang = session.get("lang") or current_user.locale
     g.available_lang = AVAILABLE_LANG
 
 
+@application.route("/admin/new_user", methods=['GET', 'POST'])
+def new_user():
+    form = NewUserForm()
+    if form.validate_on_submit():
+        email = form.email.data.encode("utf-8").lower()
+        password = form.password.data.encode("utf-8")
+
+        user = create_user(email, password, "user")
+        # This will disappear as users wont be confirmed by default but by email
+        #user.is_confirmed = True
+        #user.confirmed_on = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+        #user.confirmed_by = "admin"
+        user.save()
+        #token = generate_confirmation_token(user.email)
+        #confirm_url = url_for('confirm_email', token=token, _external=True)
+        #html = render_template('activate_email.html', confirm_url=confirm_url)
+        #subject = "Please confirm your email - unsupervised.ai"
+        #send_email(user.email, subject, html)
+        return redirect(url_for('user_list'))
+    return render_template('admin_new_user.html', form=form)
+
 # @todo: Make it so email template can be translated too
+
+
+@application.route("/users/delete/<uuid>")
+def admin_delete_user(uuid):
+    user = get_user(uuid)
+    user.delete_instance()
+    return redirect(url_for("user_list"))
+

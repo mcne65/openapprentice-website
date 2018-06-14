@@ -179,10 +179,10 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <!--
-                    <button type="button" class="btn btn-danger" id="button-delete-{{ user.client_id }}" onclick="var r = confirm('Are you sure you want to delete {{ user.username }} ({{ user.client_id }})?');if (r == true){window.location.replace('/users/delete/{{ user.client_id }}');}">Delete
-                        <img src="{{ url_for('static', filename='assets/delete.svg')}}" alt="delete"/>
+                    <button type="button" class="btn btn-danger" id="button-delete-{{ user.uuid }}" onclick="var r = confirm('Are you sure you want to delete {{ user.email }} ({{ user.uuid }})?');if (r == true){window.location.replace('/users/delete/{{ user.uuid }}');}">Delete
+                        <i class="fas fa-user-times"></i>
                     </button>
+                    <!--
                     {% if user.scope != "admin" %}
                         <button type="button" class="btn btn-warning" id="button-promote-{{ user.client_id }}" onclick="window.location.replace('/users/promote/{{ user.client_id }}');">Promote
                             <img src="{{ url_for('static', filename='assets/promote.svg')}}" alt="promote" width="50" height="50"/>
