@@ -1,19 +1,43 @@
-import datetime
+# -*- coding: utf-8 -*-
+
+"""
+    The OpenApprentice Foundation and its website OpenApprentice.org
+    Copyright (C) 2018 David Kartuzinski - contact@openapprentice.org
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+"""
+
 import os
 import uuid
+import datetime
+
 from binascii import hexlify
 
 import peewee
-from peewee import CharField, BooleanField, IntegerField, DoesNotExist, \
-    DateTimeField
-from werkzeug.security import generate_password_hash
+from peewee import CharField, BooleanField, IntegerField, DoesNotExist, DateTimeField
+
 from flask_login import UserMixin
-from openapprentice.errors import notfound
+from werkzeug.security import generate_password_hash
+
+from openapprentice.errors import notfound, forbidden
 from openapprentice import user_db
 
 
 class User(peewee.Model):
-    # Required:
+    """
+    This is the user model used in the DB
+    """
     # Required:
     uuid = CharField(
         primary_key=True,
@@ -190,11 +214,23 @@ class User(peewee.Model):
     )
 
     class Meta:
-        # This model uses the "user.db" database.
+        """
+        This model uses the "user.db" database.
+        """
         database = user_db
 
 
 def create_user(email, password, scope):
+    """
+    Creates a new user in the DB
+
+    :param email: The user's email
+    :param password: The user's password
+    :param scope: The user's scope
+
+    :return: Returns the new user object
+    """
+
     # @todo: Make is so user can specify his timezone and locale when registering
     hashed_password = generate_password_hash(password, method='sha256')
 
@@ -237,7 +273,15 @@ def create_user(email, password, scope):
 
 
 def get_user_dict(user):
-    data = {}
+    """
+    Creates a dictionary from the user object
+
+    :param user: The user to get info from
+
+    :return: Returns a dictionary containing all info from a user
+    """
+
+    data = dict()
     data['access_count'] = user.access_count
     data['birthday'] = user.birthday
     data['bitbucket'] = user.bitbucket
@@ -399,6 +443,13 @@ def get_user(uid):
 
 
 def _reset_db():
+    """
+    Internal, don't use.
+    """
+    raise forbidden.ForbiddenError(
+        "You are not allowed to delete the DB",
+        "NO WAY"
+    )
     User.drop_table()
     User.create_table()
     user = create_user("admin@openapprentice.org", "oa", "admin")

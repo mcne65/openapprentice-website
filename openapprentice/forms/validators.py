@@ -3,6 +3,8 @@
 This file contains all validators used by forms
 """
 
+import re
+
 from openapprentice.models.user import get_user
 from openapprentice.errors import notfound
 from werkzeug.security import check_password_hash
@@ -10,7 +12,7 @@ from openapprentice.utils import password_check
 from wtforms import ValidationError
 
 
-def validate_email(form, field):
+def validate_email_exists(form, field):
     """
     This function will validate if the username entered is a valid one.
 
@@ -83,3 +85,13 @@ def validate_is_email_available(form, field):
     else:
         raise ValidationError("Email taken.")
 
+
+def validate_valid_email(form, field):
+    email = field.data
+    if len(email) > 7:
+        if re.match("^.+@([?)[a-zA-Z0-9-.]+.([a-zA-Z]{2,3}|[0-9]{1,3})(]?))$", email) is not None:
+            return
+        else:
+            raise ValidationError("Sorry, this email adress is not valid.")
+    else:
+        raise ValidationError("Sorry, this email adress is not valid.")
