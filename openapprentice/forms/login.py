@@ -20,6 +20,7 @@
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, validators
+from flask_babel import gettext
 
 from openapprentice.forms.validators import validate_email_exists, validate_is_email_available
 from openapprentice.forms.validators import validate_password, check_password_strengh
@@ -30,8 +31,8 @@ class LoginForm(FlaskForm):
     This class corresponds to the login form rendered in `/login`.
     """
 
-    email = StringField('Email', [validators.InputRequired(), validate_email_exists])
-    password = PasswordField('Password', [validators.InputRequired(), validate_password])
+    email = StringField(gettext('Email Address'), [validators.InputRequired(), validate_email_exists])
+    password = PasswordField(gettext('Password'), [validators.InputRequired(), validate_password])
     # recaptcha = RecaptchaField()
 
 
@@ -40,11 +41,13 @@ class RegistrationForm(FlaskForm):
     This class corresponds to the form rendered in `/register`.
     """
 
-    email = StringField('Email Address', [validators.Email(), validators.InputRequired(), validate_is_email_available])
-    password = PasswordField('New Password', [
+    email = StringField(gettext('Email Address'), [validators.Email(),
+                                                   validators.InputRequired(),
+                                                   validate_is_email_available])
+    password = PasswordField(gettext('New Password'), [
         validators.InputRequired(),
         check_password_strengh,
-        validators.EqualTo('confirm', message='Passwords must match')
+        validators.EqualTo(gettext('confirm'), message=gettext('Passwords must match'))
     ])
-    confirm = PasswordField('Repeat Password')
+    confirm = PasswordField(gettext('Repeat Password'))
     # recaptcha = RecaptchaField()

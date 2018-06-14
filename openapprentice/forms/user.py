@@ -20,6 +20,7 @@
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, validators
+from flask_babel import gettext
 
 from openapprentice.forms.validators import validate_is_email_available, check_password_strengh
 
@@ -29,12 +30,31 @@ class NewUserForm(FlaskForm):
     This class corresponds to the form rendered in `/register`.
     """
 
-    email = StringField('Email Address', [validators.Email(), validators.InputRequired(), validate_is_email_available])
-    password = PasswordField('New Password', [
+    email = StringField(gettext('Email Address'), [validators.Email(),
+                                                   validators.InputRequired(),
+                                                   validate_is_email_available])
+    password = PasswordField(gettext('New Password'), [
         validators.InputRequired(),
         check_password_strengh,
-        validators.EqualTo('confirm', message='Passwords must match')
+        validators.EqualTo(gettext('confirm'), message=gettext('Passwords must match'))
     ])
-    confirm = PasswordField('Repeat Password')
-    disable_secure_password = BooleanField('Disable secure password check?')
+    confirm = PasswordField(gettext('Repeat Password'))
+    disable_secure_password = BooleanField(gettext('Disable secure password check?'))
+    # recaptcha = RecaptchaField()
+
+
+class Register(FlaskForm):
+    """
+    This class corresponds to the form rendered in `/register`.
+    """
+
+    email = StringField(gettext('Email Address'), [validators.Email(),
+                                                   validators.InputRequired(),
+                                                   validate_is_email_available])
+    password = PasswordField(gettext('New Password'), [
+        validators.InputRequired(),
+        check_password_strengh,
+        validators.EqualTo(gettext('confirm'), message=gettext('Passwords must match'))
+    ])
+    confirm = PasswordField(gettext('Repeat Password'))
     # recaptcha = RecaptchaField()

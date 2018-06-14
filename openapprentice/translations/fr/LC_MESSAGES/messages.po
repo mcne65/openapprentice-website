@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-06-14 13:31+0200\n"
+"POT-Creation-Date: 2018-06-14 14:09+0200\n"
 "PO-Revision-Date: 2018-06-13 21:03+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -17,6 +17,91 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
+
+#: openapprentice/forms/contact.py:35
+msgid "First Name"
+msgstr "Prenom"
+
+#: openapprentice/forms/contact.py:36
+msgid "Last Name"
+msgstr "Nom"
+
+#: openapprentice/forms/contact.py:37 openapprentice/forms/login.py:34
+#: openapprentice/forms/login.py:44 openapprentice/forms/user.py:33
+#: openapprentice/forms/user.py:51
+msgid "Email Address"
+msgstr "Adresse Email"
+
+#: openapprentice/forms/login.py:35
+msgid "Password"
+msgstr "Mot de passe"
+
+#: openapprentice/forms/login.py:47 openapprentice/forms/user.py:36
+#: openapprentice/forms/user.py:54
+msgid "New Password"
+msgstr "Nouveau mot de passe"
+
+#: openapprentice/forms/login.py:50 openapprentice/forms/user.py:39
+#: openapprentice/forms/user.py:57
+msgid "confirm"
+msgstr "Confirmation"
+
+#: openapprentice/forms/login.py:50 openapprentice/forms/user.py:39
+#: openapprentice/forms/user.py:57
+msgid "Passwords must match"
+msgstr "Les mots de passe ne correspondent pas"
+
+#: openapprentice/forms/login.py:52 openapprentice/forms/user.py:41
+#: openapprentice/forms/user.py:59
+msgid "Repeat Password"
+msgstr "Repetez le mot de passe"
+
+#: openapprentice/forms/user.py:42
+msgid "Disable secure password check?"
+msgstr "Desactiver la verification du mot de passe"
+
+#: openapprentice/forms/validators.py:30
+msgid "Unknown Email"
+msgstr "Email inconnu"
+
+#: openapprentice/forms/validators.py:43 openapprentice/forms/validators.py:45
+msgid "Invalid password"
+msgstr "Mot de passe invalide"
+
+#: openapprentice/forms/validators.py:65
+msgid "Weak password: Length inferior to 8"
+msgstr "Mot de passe faible: Doit etre > a 8 characteres"
+
+#: openapprentice/forms/validators.py:67
+msgid "Weak password: Missing at least 1 digit"
+msgstr "Mot de passe faible: Doit contenir au moins 1 chiffre"
+
+#: openapprentice/forms/validators.py:69
+msgid "Weak password: Missing at least 1 uppercase character"
+msgstr "Mot de passe faible: Doit contenir au moins 1 majuscule"
+
+#: openapprentice/forms/validators.py:71
+msgid "Weak password: Missing at least 1 lowercase character"
+msgstr "Mot de passe faible: Doit contenir au moins 1 minuscule"
+
+#: openapprentice/forms/validators.py:73
+msgid "Weak password: Missing at least 1 special symbol (eg. !@#$%^&*.)"
+msgstr ""
+"Mot de passe faible: Doit contenir au moins 1 symbole special (ex. "
+"!@#$%^&*.)"
+
+#: openapprentice/forms/validators.py:85
+msgid "Field required."
+msgstr "Champs requis"
+
+#: openapprentice/forms/validators.py:91
+msgid "Email taken."
+msgstr "Email deja utilise"
+
+#: openapprentice/forms/validators.py:100
+#: openapprentice/forms/validators.py:102
+msgid "Sorry, this email adress is not valid."
+msgstr "Desole, cet adresse email n'est pas valide"
 
 #: openapprentice/templates/admin.html:5
 #: openapprentice/templates/admin.html:112
@@ -293,4 +378,7 @@ msgstr "StackOverflow de l'utilisateur"
 #: openapprentice/templates/user_modal_macro.html:176
 msgid "The user's DevRant"
 msgstr "DevRant de l'utilisateur"
+
+#~ msgid "Email Adress"
+#~ msgstr ""
 

@@ -21,6 +21,7 @@
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, validators
+from flask_babel import gettext
 
 from openapprentice.forms.validators import validate_valid_email
 
@@ -31,8 +32,8 @@ class ContactForm(FlaskForm):
     """
 
     # @todo: Add a checkbox to send a copy of the message
-    first_name = StringField('First Name', [validators.InputRequired()])
-    last_name = StringField('Last Name', [validators.InputRequired()])
-    email = StringField('Email Address', [validators.InputRequired(), validators.Email(), validate_valid_email])
+    first_name = StringField(gettext('First Name'), [validators.InputRequired()])
+    last_name = StringField(gettext('Last Name'), [validators.InputRequired()])
+    email = StringField(gettext('Email Address'), [validators.InputRequired(), validators.Email(), validate_valid_email])
     message = StringField('Message', [validators.InputRequired()])
 

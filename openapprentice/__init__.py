@@ -31,7 +31,7 @@ from flask_mail import Mail
 from flask_babel import Babel
 
 
-ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 if "OA_GMAIL_PASSWORD" not in os.environ:

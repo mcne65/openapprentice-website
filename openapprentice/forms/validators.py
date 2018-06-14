@@ -5,6 +5,8 @@ This file contains all validators used by forms
 
 import re
 
+from flask_babel import gettext
+
 from openapprentice.models.user import get_user
 from openapprentice.errors import notfound
 from werkzeug.security import check_password_hash
@@ -25,7 +27,7 @@ def validate_email_exists(form, field):
     try:
         get_user(field.data)
     except notfound.NotFoundError:
-        raise ValidationError('Unknown Email')
+        raise ValidationError(gettext('Unknown Email'))
 
 
 def validate_password(form, field):
@@ -38,9 +40,9 @@ def validate_password(form, field):
     try:
         user = get_user(form.email.data.encode("utf-8").lower())
     except notfound.NotFoundError:
-        raise ValidationError("Invalid password")
+        raise ValidationError(gettext("Invalid password"))
     if not check_password_hash(user.password, field.data.encode("utf-8")):
-        raise ValidationError('Invalid password')
+        raise ValidationError(gettext('Invalid password'))
 
 
 def check_password_strengh(form, field):
@@ -51,21 +53,24 @@ def check_password_strengh(form, field):
     :return: Returns nothing if ok, else will raise a ValidationError
     """
 
-    if form.disable_secure_password.data:
-        return
+    try:
+        if form.disable_secure_password.data:
+            return
+    except AttributeError:
+        pass
 
     results = password_check(field.data)
     if not results['password_ok']:
         if results['length_error']:
-            raise ValidationError("Weak password: Length inferior to 8")
+            raise ValidationError(gettext("Weak password: Length inferior to 8"))
         if results['digit_error']:
-            raise ValidationError("Weak password: Missing at least 1 digit")
+            raise ValidationError(gettext("Weak password: Missing at least 1 digit"))
         if results['uppercase_error']:
-            raise ValidationError("Weak password: Missing at least 1 uppercase character")
+            raise ValidationError(gettext("Weak password: Missing at least 1 uppercase character"))
         if results['lowercase_error']:
-            raise ValidationError("Weak password: Missing at least 1 lowercase character")
+            raise ValidationError(gettext("Weak password: Missing at least 1 lowercase character"))
         if results['symbol_error']:
-            raise ValidationError("Weak password: Missing at least 1 special symbol (eg. !@#$%^&*.)")
+            raise ValidationError(gettext("Weak password: Missing at least 1 special symbol (eg. !@#$%^&*.)"))
 
 
 def validate_is_email_available(form, field):
@@ -77,13 +82,13 @@ def validate_is_email_available(form, field):
     """
 
     if not field.data:
-        raise ValidationError("Field required.")
+        raise ValidationError(gettext("Field required."))
     try:
         get_user(field.data)
     except notfound.NotFoundError:
         pass
     else:
-        raise ValidationError("Email taken.")
+        raise ValidationError(gettext("Email taken."))
 
 
 def validate_valid_email(form, field):
@@ -92,6 +97,6 @@ def validate_valid_email(form, field):
         if re.match("^.+@([?)[a-zA-Z0-9-.]+.([a-zA-Z]{2,3}|[0-9]{1,3})(]?))$", email) is not None:
             return
         else:
-            raise ValidationError("Sorry, this email adress is not valid.")
+            raise ValidationError(gettext("Sorry, this email adress is not valid."))
     else:
-        raise ValidationError("Sorry, this email adress is not valid.")
+        raise ValidationError(gettext("Sorry, this email adress is not valid."))
