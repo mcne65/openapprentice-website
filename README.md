@@ -69,13 +69,13 @@ pybabel extract -F babel.cfg -o messages.pot .
 ```
 Once extracted, merge the translations to update if some strings are missing:
 ```bash
-pybabel update -i messages.pot -d translations
+pybabel update -i messages.pot -d openapprentice/translations
 ```
 Then, you can start updating your desired translation in `openapprentice/translation/<lang_code>/LC_MESSAGES/messages.po`
 
 Once done, Compile your changes with
 ```bash
-pybabel compile -d translations
+pybabel compile -d openapprentice/translations
 ```
 And test them. Once you are sure everything works push the updated `messages.po` to a new branch and start a PR!
 

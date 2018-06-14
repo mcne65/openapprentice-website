@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-06-14 08:24+0200\n"
+"POT-Creation-Date: 2018-06-14 13:31+0200\n"
 "PO-Revision-Date: 2018-06-13 21:03+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -70,6 +70,28 @@ msgstr "La Fondation OpenApprentice"
 msgid "Contact us"
 msgstr "Nous contacter"
 
+#: openapprentice/templates/admin_new_user.html:2
+msgid "OpenApprentice Admin New User"
+msgstr "Nouvel Utilisateur - Admin OpenApprentice"
+
+#: openapprentice/templates/admin_new_user.html:10
+msgid "New User"
+msgstr "Nouvel Utilisateur"
+
+#: openapprentice/templates/admin_new_user.html:22
+msgid "Create New User"
+msgstr "Creer nouvel Utilisateur "
+
+#: openapprentice/templates/admin_new_user.html:23
+#: openapprentice/templates/register.html:23
+msgid "Reset"
+msgstr "Réinitialiser"
+
+#: openapprentice/templates/admin_new_user.html:29
+#: openapprentice/templates/register.html:29
+msgid "Cancel"
+msgstr "Annuler"
+
 #: openapprentice/templates/login.html:3
 msgid "OpenApprentice Login"
 msgstr "Connexion OpenApprentice"
@@ -123,14 +145,6 @@ msgstr "Liens"
 #: openapprentice/templates/register.html:3
 msgid "OpenApprentice Register"
 msgstr "S'enregistrer OpenApprentice"
-
-#: openapprentice/templates/register.html:23
-msgid "Reset"
-msgstr "Réinitialiser"
-
-#: openapprentice/templates/register.html:29
-msgid "Cancel"
-msgstr "Annuler"
 
 #: openapprentice/templates/team.html:62
 msgid "Meet the team"
@@ -279,3 +293,4 @@ msgstr "StackOverflow de l'utilisateur"
 #: openapprentice/templates/user_modal_macro.html:176
 msgid "The user's DevRant"
 msgstr "DevRant de l'utilisateur"
+
