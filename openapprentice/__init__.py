@@ -73,5 +73,4 @@ user_db = peewee.MySQLDatabase(
 
 babel = Babel(application)
 
-
-from routes import main
+from openapprentice.routes import main
