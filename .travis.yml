@@ -33,7 +33,7 @@ before_script:
 script: nosetests
 
 notifications:
-  slack:
+  slack: openapprentice:RyaCVPksPhA88F4shNtXAwlT
     on_success: always
     on_failure: always
   email:
