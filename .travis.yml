@@ -34,8 +34,6 @@ script: nosetests
 
 notifications:
   slack: openapprentice:RyaCVPksPhA88F4shNtXAwlT
-    on_success: always
-    on_failure: always
   email:
     recipients:
       - jules@openapprentice.org
