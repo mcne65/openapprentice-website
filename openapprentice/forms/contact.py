@@ -34,6 +34,7 @@ class ContactForm(FlaskForm):
     # @todo: Add a checkbox to send a copy of the message
     first_name = StringField(gettext('First Name'), [validators.InputRequired()])
     last_name = StringField(gettext('Last Name'), [validators.InputRequired()])
-    email = StringField(gettext('Email Address'), [validators.InputRequired(), validators.Email(), validate_valid_email])
+    email = StringField(gettext('Email Address'), [validators.InputRequired(),
+                                                   validators.Email(),
+                                                   validate_valid_email])
     message = StringField('Message', [validators.InputRequired()])
-

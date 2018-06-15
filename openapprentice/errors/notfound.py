@@ -44,4 +44,3 @@ def generate_notfound(error):
     """
 
     return generate_error_json(error, 404)
-

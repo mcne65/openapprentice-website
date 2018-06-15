@@ -129,10 +129,10 @@ def login():
         user.save()
         user = UserLoginFlask(user.uuid)
         login_user(user)
-        #if not user.is_confirmed:
-        #    flash("Sorry, you need to confirm your email adress {}.".format(user.email))
-        #    logging.warn("User {} tried to login but email {} is not confirmed".format(user.name, user.email))
-        #    return redirect(url_for("unconfirmed"))
+        # if not user.is_confirmed:
+        #     flash("Sorry, you need to confirm your email adress {}.".format(user.email))
+        #     logging.warn("User {} tried to login but email {} is not confirmed".format(user.name, user.email))
+        #     return redirect(url_for("unconfirmed"))
         next = request.args.get('next')
         if not is_safe_url(next):
             return abort(400)
@@ -204,11 +204,11 @@ def register():
         user.confirmed_on = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
         user.confirmed_by = "admin"
         user.save()
-        #token = generate_confirmation_token(user.email)
-        #confirm_url = url_for('confirm_email', token=token, _external=True)
-        #html = render_template('activate_email.html', confirm_url=confirm_url)
-        #subject = "Please confirm your email - unsupervised.ai"
-        #send_email(user.email, subject, html)
+        # token = generate_confirmation_token(user.email)
+        # confirm_url = url_for('confirm_email', token=token, _external=True)
+        # html = render_template('activate_email.html', confirm_url=confirm_url)
+        # subject = "Please confirm your email - unsupervised.ai"
+        # send_email(user.email, subject, html)
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
 
@@ -269,15 +269,15 @@ def new_user():
 
         user = create_user(email, password, "user")
         # This will disappear as users wont be confirmed by default but by email
-        #user.is_confirmed = True
-        #user.confirmed_on = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
-        #user.confirmed_by = "admin"
+        # user.is_confirmed = True
+        # user.confirmed_on = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+        # user.confirmed_by = "admin"
         user.save()
-        #token = generate_confirmation_token(user.email)
-        #confirm_url = url_for('confirm_email', token=token, _external=True)
-        #html = render_template('activate_email.html', confirm_url=confirm_url)
-        #subject = "Please confirm your email - unsupervised.ai"
-        #send_email(user.email, subject, html)
+        # token = generate_confirmation_token(user.email)
+        # confirm_url = url_for('confirm_email', token=token, _external=True)
+        # html = render_template('activate_email.html', confirm_url=confirm_url)
+        # subject = "Please confirm your email - unsupervised.ai"
+        # send_email(user.email, subject, html)
         return redirect(url_for('user_list'))
     return render_template('admin_new_user.html', form=form)
 
@@ -289,4 +289,3 @@ def admin_delete_user(uuid):
     user = get_user(uuid)
     user.delete_instance()
     return redirect(url_for("user_list"))
-

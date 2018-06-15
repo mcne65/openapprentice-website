@@ -44,4 +44,3 @@ def generate_unauthorized(error):
     """
 
     return generate_error_json(error, 401)
-
