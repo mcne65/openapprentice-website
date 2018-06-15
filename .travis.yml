@@ -30,7 +30,7 @@ before_script:
   - export FLASK_DEBUG=1
   - mysql -e 'create database oa_users;'
 
-script: nosetests
+script: nosetests && flake8
 
 notifications:
   slack: openapprentice:RyaCVPksPhA88F4shNtXAwlT
