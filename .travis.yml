@@ -23,7 +23,7 @@ python:
 install: pip install -r requirements.txt
 
 env:
-  - OA_DB_USER-travis
+  - OA_DB_USER=travis
   - OA_DB_PASSWD=""
 
 
