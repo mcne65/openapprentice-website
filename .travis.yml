@@ -1,0 +1,47 @@
+os:
+  - linux
+  - osx
+
+matrix:
+  allow_failures:
+    - os: osx
+
+services:
+  - mysql
+
+addons:
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
+
+dist: trusty
+sudo: required
+
+language: python
+
+python:
+  - 2.7
+  - 3.4
+  - 3.5
+  - 3.6
+
+install: pip install -r requirements.txt
+
+env:
+  - OA_DB_USER-travis
+  - OA_DB_PASSWD=""
+
+
+before_script:
+  - export FLASK_APP="$TRAVIS_BUILD_DIR/application.py"
+  - export FLASK_DEBUG=1
+  - mysql -e 'create database oa_users;'
+
+jobs:
+  include:
+    - stage: test
+      script: nosetests --verbose
+    - stage: lint
+      script: flake8

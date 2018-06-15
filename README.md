@@ -1,7 +1,7 @@
-![OpenApprenticeFoundationLogo](/openapprentice/static/images/openapprentice-foundation-logo.png)
+![OpenApprenticeFoundationLogo](/openapprentice/static/images/logofinal.jpg)
 
 
-# The OpenApprentice Foundation
+# The OpenApprentice Foundation [![Build Status](https://travis-ci.org/OpenApprenticeFoundation/openapprentice-website.svg?branch=master)](https://travis-ci.org/OpenApprenticeFoundation/openapprentice-website)
 [![GitHub last commit](https://img.shields.io/github/last-commit/OpenApprenticeFoundation/openapprentice-website.svg)](https://github.com/OpenApprenticeFoundation/openapprentice-website/commits/master)
 [![GitHub commit activity the past week, 4 weeks, year](https://img.shields.io/github/commit-activity/w/OpenApprenticeFoundation/openapprentice-website.svg)](https://github.com/OpenApprenticeFoundation/openapprentice-website/commits/master)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
