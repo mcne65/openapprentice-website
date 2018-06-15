@@ -19,8 +19,7 @@
 """
 
 from openapprentice import application
-
-from template import generate_error_json
+from openapprentice.errors.template import generate_error_json
 
 
 class BadRequestError(Exception):

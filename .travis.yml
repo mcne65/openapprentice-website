@@ -31,3 +31,15 @@ before_script:
   - mysql -e 'create database oa_users;'
 
 script: nosetests
+
+notifications:
+  slack:
+    on_success: always
+    on_failure: always
+  email:
+    recipients:
+      - jules@openapprentice.org
+      - jules.lasne@gmail.com
+      # TODO: add an oa email specific for travis notifications.
+    on_success: change
+    on_failure: always

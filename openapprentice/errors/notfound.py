@@ -18,9 +18,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-from template import generate_error_json
-
 from openapprentice import application
+from openapprentice.errors.template import generate_error_json
 
 
 class NotFoundError(Exception):
