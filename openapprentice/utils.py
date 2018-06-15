@@ -21,10 +21,15 @@ This file contains all utility function, classes and variables used throughout t
 """
 
 from flask import render_template, request
-from urlparse import urlparse, urljoin
 from flask_mail import Message
 from openapprentice import application, mail
 import re
+import sys
+
+if sys.version_info > (3, 0):
+    from urllib.parse import urlparse, urljoin
+else:
+    from urlparse import urlparse, urljoin
 
 
 def generate_email(preview_text=None,
