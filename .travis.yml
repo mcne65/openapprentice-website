@@ -36,8 +36,6 @@ notifications:
   slack: openapprentice:RyaCVPksPhA88F4shNtXAwlT
   email:
     recipients:
-      - jules@openapprentice.org
-      - jules.lasne@gmail.com
-      # TODO: add an oa email specific for travis notifications.
+      - travis@openapprentice.org
     on_success: change
     on_failure: always
