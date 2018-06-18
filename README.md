@@ -99,10 +99,6 @@ and edit the file `lang.ini`.
 
 Once all of this is done, push this to a new branch and start a PR !
 
-## Founded by David Kartuzinski
-
-Founded in April 2018 to accomplish the aforementioned goals, and definitely not Founded alone.
-
 
 ## License
 
@@ -113,11 +109,4 @@ June 5, 2018
 [GNU General Public License v3.0](https://github.com/OpenApprenticeFoundation/openapprentice-website/blob/master/LICENSE)
 
 
-
-
-
-
-
-
-
-
+Founded in April 2018 by `David Kartuzinski` to accomplish the aforementioned goals, and definitely not Founded alone.
