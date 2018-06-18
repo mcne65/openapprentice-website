@@ -107,6 +107,3 @@ We continue to receive advice as to the best license for our project. We intend 
 June 5, 2018
 
 [GNU General Public License v3.0](https://github.com/OpenApprenticeFoundation/openapprentice-website/blob/master/LICENSE)
-
-
-Founded in April 2018 by `David Kartuzinski` to accomplish the aforementioned goals, and definitely not Founded alone.
