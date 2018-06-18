@@ -34,8 +34,9 @@ from flask_babel import Babel
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-if "OA_GMAIL_PASSWORD" not in os.environ:
-    raise EnvironmentError("OA_GMAIL_PASSWORD should be set with the password for the email used to send emails.")
+if "OA_CONTACT_EMAIL_PASSWORD" not in os.environ:
+    raise EnvironmentError("OA_CONTACT_EMAIL_PASSWORD should be set with the password"
+                           " for the email used to send emails.")
 
 if "OA_DB_USER" not in os.environ:
     raise EnvironmentError("OA_DB_USER should be set with the user used to access the DB")
@@ -56,13 +57,13 @@ application = Flask(__name__)
 application.debug = DEBUG
 application.secret_key = SECRET_KEY
 
-application.config['MAIL_SERVER'] = 'smtp.googlemail.com'
-application.config['MAIL_PORT'] = 465
-application.config['MAIL_USE_TLS'] = False
-application.config['MAIL_USE_SSL'] = True
-application.config['MAIL_USERNAME'] = 'OpenApprenticeFoundation@gmail.com'
-application.config['MAIL_PASSWORD'] = os.environ.get("OA_GMAIL_PASSWORD")
-application.config['MAIL_DEFAULT_SENDER'] = 'OpenApprenticeFoundation@gmail.com'
+application.config['MAIL_SERVER'] = 'openapprentice.org'
+application.config['MAIL_PORT'] = 587
+application.config['MAIL_USE_TLS'] = True
+application.config['MAIL_USE_SSL'] = False
+application.config['MAIL_USERNAME'] = 'contact@openapprentice.org'
+application.config['MAIL_PASSWORD'] = os.environ.get("OA_CONTACT_EMAIL_PASSWORD")
+application.config['MAIL_DEFAULT_SENDER'] = 'contact@openapprentice.org'
 
 mail = Mail(application)
 user_db = peewee.MySQLDatabase(

@@ -106,7 +106,7 @@ def contact_us():
             line3="More info:",
             line4=info
         )
-        send_email("OpenApprenticeFoundation@gmail.com", "New message.", html_email)
+        send_email("contact@openapprentice.org", "New message from {} {}".format(first_name, last_name), html_email)
         return redirect(url_for("home"))
 
     return render_template("contact.html", form=form)
