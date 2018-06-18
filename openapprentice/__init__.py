@@ -57,6 +57,8 @@ application = Flask(__name__)
 application.debug = DEBUG
 application.secret_key = SECRET_KEY
 
+application.config['SERVER_NAME'] = 'openapprentice.org'
+
 application.config['MAIL_SERVER'] = 'openapprentice.org'
 application.config['MAIL_PORT'] = 587
 application.config['MAIL_USE_TLS'] = True

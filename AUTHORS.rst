@@ -3,7 +3,7 @@ OpenApprentice's website is written and maintained by David Kartuzinski, Jules L
 Core Contributors
 ````````````````````````````
 - David Kartuzinski <david@kaidawei.me> `@davidkartuzinski <https://github.com/davidkartuzinski>`_, Founding Member
-- Jules Lasne <jules.lasne@gmail.com> `@seluj78 <https://github.com/seluj78>`_, Founding Member
+- Jules Lasne <jules.lasne@gmail.com> `@seluj78 <https://github.com/seluj78>`_, Founding Member and Core Developer
 
 Patches and Suggestions
 ```````````````````````

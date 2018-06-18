@@ -20,11 +20,14 @@
 This file contains all utility function, classes and variables used throughout the program
 """
 
+import string
+import random
+import re
+import sys
+
 from flask import render_template, request
 from flask_mail import Message
 from openapprentice import application, mail
-import re
-import sys
 
 if sys.version_info > (3, 0):
     from urllib.parse import urlparse, urljoin
@@ -153,3 +156,7 @@ def password_check(password):
         'lowercase_error': lowercase_error,
         'symbol_error': symbol_error,
     }
+
+
+def get_random_string(size=8, chars=string.ascii_uppercase + string.digits):
+    return ''.join(random.choice(chars) for x in range(size))
