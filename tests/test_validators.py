@@ -43,7 +43,7 @@ def test_check_password_strengh_length():
     with assert_raises(ValidationError) as e:
         check_password_strengh(None, field)
 
-    assert_equal(e.exception.message, "Weak password: Length inferior to 8")
+    assert_equal(e.exception.args[0], "Weak password: Length inferior to 8")
 
 
 def test_check_password_strengh_at_least_one_digit():
@@ -51,7 +51,7 @@ def test_check_password_strengh_at_least_one_digit():
     with assert_raises(ValidationError) as e:
         check_password_strengh(None, field)
 
-    assert_equal(e.exception.message, "Weak password: Missing at least 1 digit")
+    assert_equal(e.exception.args[0], "Weak password: Missing at least 1 digit")
 
 
 def test_check_password_strengh_at_least_one_uppercase():
@@ -59,7 +59,7 @@ def test_check_password_strengh_at_least_one_uppercase():
     with assert_raises(ValidationError) as e:
         check_password_strengh(None, field)
 
-    assert_equal(e.exception.message, "Weak password: Missing at least 1 uppercase character")
+    assert_equal(e.exception.args[0], "Weak password: Missing at least 1 uppercase character")
 
 
 def test_check_password_strengh_at_least_one_lowercase():
@@ -67,7 +67,7 @@ def test_check_password_strengh_at_least_one_lowercase():
     with assert_raises(ValidationError) as e:
         check_password_strengh(None, field)
 
-    assert_equal(e.exception.message, "Weak password: Missing at least 1 lowercase character")
+    assert_equal(e.exception.args[0], "Weak password: Missing at least 1 lowercase character")
 
 
 def test_check_password_strengh_at_least_one_special_symbol():
@@ -75,7 +75,7 @@ def test_check_password_strengh_at_least_one_special_symbol():
     with assert_raises(ValidationError) as e:
         check_password_strengh(None, field)
 
-    assert_equal(e.exception.message, "Weak password: Missing at least 1 special symbol (eg. !@#$%^&*.)")
+    assert_equal(e.exception.args[0], "Weak password: Missing at least 1 special symbol (eg. !@#$%^&*.)")
 
 
 def test_check_password_strengh_ok():
@@ -92,7 +92,7 @@ def test_validate_email_exists_unknown_email():
     field = FakeField(random_email)
     with assert_raises(ValidationError) as e:
         validate_email_exists(None, field)
-    assert_equal(e.exception.message, "Unknown Email")
+    assert_equal(e.exception.args[0], "Unknown Email")
 
 
 def test_validate_email_exists_email_exists():
@@ -111,14 +111,14 @@ def test_validate_is_email_available_email_taken():
     with assert_raises(ValidationError) as e:
         validate_is_email_available(None, field)
     user.delete_instance()
-    assert_equal(e.exception.message, "Email taken.")
+    assert_equal(e.exception.args[0], "Email taken.")
 
 
 def test_validate_is_email_available_no_email():
     field = FakeField("")
     with assert_raises(ValidationError) as e:
         validate_is_email_available(None, field)
-    assert_equal(e.exception.message, "Field required.")
+    assert_equal(e.exception.args[0], "Field required.")
 
 
 def test_validate_is_email_available_email_free():
@@ -131,18 +131,18 @@ def test_validate_valid_email_too_small():
     field = FakeField("XS@x.x")
     with assert_raises(ValidationError) as e:
         validate_valid_email(None, field)
-    assert_equal(e.exception.message, "Sorry, this email adress is not valid.")
+    assert_equal(e.exception.args[0], "Sorry, this email adress is not valid.")
 
 
 def test_validate_valid_email_missing_end():
     field = FakeField("xxx@xxx")
     with assert_raises(ValidationError) as e:
         validate_valid_email(None, field)
-    assert_equal(e.exception.message, "Sorry, this email adress is not valid.")
+    assert_equal(e.exception.args[0], "Sorry, this email adress is not valid.")
 
 
 def test_validate_valid_email_missing_at():
     field = FakeField("xxxxxx.com")
     with assert_raises(ValidationError) as e:
         validate_valid_email(None, field)
-    assert_equal(e.exception.message, "Sorry, this email adress is not valid.")
+    assert_equal(e.exception.args[0], "Sorry, this email adress is not valid.")
