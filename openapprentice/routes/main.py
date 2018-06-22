@@ -2,7 +2,7 @@
 
 """
     The OpenApprentice Foundation and its website OpenApprentice.org
-    Copyright (C) 2018 David Kartuzinski - contact@openapprentice.org
+    Copyright (C) 2018 The OpenApprentice Foundation - contact@openapprentice.org
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
