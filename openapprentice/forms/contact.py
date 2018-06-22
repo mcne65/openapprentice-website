@@ -20,7 +20,7 @@
 
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, validators
+from wtforms import StringField, TextAreaField, validators
 from flask_babel import gettext
 
 from openapprentice.forms.validators import validate_valid_email
@@ -37,4 +37,4 @@ class ContactForm(FlaskForm):
     email = StringField(gettext('Email Address'), [validators.InputRequired(),
                                                    validators.Email(),
                                                    validate_valid_email])
-    message = StringField('Message', [validators.InputRequired()])
+    message = TextAreaField('Message', [validators.InputRequired()])

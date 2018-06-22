@@ -57,7 +57,10 @@ application = Flask(__name__)
 application.debug = DEBUG
 application.secret_key = SECRET_KEY
 
-application.config['SERVER_NAME'] = 'openapprentice.org'
+
+# This line is commented because it makes everything stop working AND I don't remember why it's here...
+# TODO: Find out why it is here AND add an if around it or remove it
+# application.config['SERVER_NAME'] = 'openapprentice.org'
 
 application.config['MAIL_SERVER'] = 'openapprentice.org'
 application.config['MAIL_PORT'] = 587
