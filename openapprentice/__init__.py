@@ -62,6 +62,10 @@ application.secret_key = SECRET_KEY
 # TODO: Find out why it is here AND add an if around it or remove it
 # application.config['SERVER_NAME'] = 'openapprentice.org'
 
+# For sending email tokens
+application.config['SECURITY_PASSWORD_SALT'] = "my_precious"
+
+
 application.config['MAIL_SERVER'] = 'openapprentice.org'
 application.config['MAIL_PORT'] = 587
 application.config['MAIL_USE_TLS'] = True
