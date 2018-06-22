@@ -20,7 +20,7 @@
 
 from datetime import datetime
 
-from flask import render_template, redirect, url_for, session, request, abort, g
+from flask import render_template, redirect, url_for, session, request, abort, g, flash
 from flask_login import LoginManager, logout_user, login_required, login_user, current_user
 
 from openapprentice import application, babel, AVAILABLE_LANG
@@ -261,7 +261,7 @@ def before():
 
 
 @application.route("/admin/new_user", methods=['GET', 'POST'])
-def new_user():
+def admin_new_user():
     form = NewUserForm()
     if form.validate_on_submit():
         email = form.email.data.encode("utf-8").lower()
@@ -269,14 +269,14 @@ def new_user():
 
         user = create_user(email, password, "user")
         # This will disappear as users wont be confirmed by default but by email
-        # user.is_confirmed = True
-        # user.confirmed_on = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
-        # user.confirmed_by = "admin"
+        user.is_confirmed = True
+        user.confirmed_on = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+        user.confirmed_by = "admin"
         user.save()
         # token = generate_confirmation_token(user.email)
         # confirm_url = url_for('confirm_email', token=token, _external=True)
         # html = render_template('activate_email.html', confirm_url=confirm_url)
-        # subject = "Please confirm your email - unsupervised.ai"
+        # subject = "Please confirm your email - OpenApprentice"
         # send_email(user.email, subject, html)
         return redirect(url_for('user_list'))
     return render_template('admin_new_user.html', form=form)
@@ -287,5 +287,17 @@ def new_user():
 @application.route("/users/delete/<uuid>")
 def admin_delete_user(uuid):
     user = get_user(uuid)
-    user.delete_instance()
+    if user.email != "admin@openapprentice.org" or current_user.uuid != user.uuid:
+        user.delete_instance()
+    else:
+        flash("This user cannot be deleted", category="error")
+    return redirect(url_for("user_list"))
+
+
+@application.route("/users/promote/<uuid>")
+def admin_promote_user(uuid):
+    user = get_user(uuid)
+    if user.scope != "admin":
+        user.scope = "admin"
+        user.save()
     return redirect(url_for("user_list"))
