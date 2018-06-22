@@ -1,6 +1,4 @@
-{% block head %}
-    <title>{{ gettext('OpenApprentice Admin New User') }}</title>
-{% endblock %}
+{% extends "admin.html" %}
 {% block body %}
     {% from "_formhelpers.html" import render_field %}
     <form method=post id="new-user-form">
@@ -24,9 +22,6 @@
                     <br>
             </div>
         </div>
-    </form>
-    <form action="{{ url_for("admin_dashboard") }}" method="GET">
-        <input type="submit" value="{{ gettext('Cancel') }}" class="btn-cancel btn-primary btn-large btn-block" >
     </form>
     <script type="text/javascript">
         function resetForm() {

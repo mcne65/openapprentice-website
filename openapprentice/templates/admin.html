@@ -115,7 +115,7 @@
                             <ul class="nav navbar-nav">
                                 <!-- Add an item to the left of the top navbar -->
                                 <!-- <li class="active"><a href="#">Home</a></li> -->
-                                <li><a href="{{ url_for("new_user") }}"><i class="fas fa-user-plus"></i> {{ gettext('New user') }}</a></li>
+                                <li><a href="{{ url_for("admin_new_user") }}"><i class="fas fa-user-plus"></i> {{ gettext('New user') }}</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <!-- Add an item to the right of the top navbar -->
@@ -131,7 +131,7 @@
                                     </ul>
                                 </li>
                                 <ul class="languagepicker roundborders large">
-                                        <a href="/lang/{{ g.current_lang }}"><li><img src="/static/images/flag-{{ g.current_lang }}.png"/>{{ g.current_lang }}</li></a>
+                                    <a href="/lang/{{ g.current_lang }}"><li><img src="/static/images/flag-{{ g.current_lang }}.png"/>{{ g.current_lang }}</li></a>
                                     {% for lang in g.available_lang %}
                                         {% if lang != g.current_lang %}
                                             <a href="/lang/{{ lang }}"><li><img src="/static/images/flag-{{ lang }}.png"/>{{ lang }}</li></a>
@@ -156,8 +156,6 @@
             {% endblock %}
 
             {% block body %}
-                <div class="col-sm-9">
-                </div>
             {% endblock %}
 
         </div>
