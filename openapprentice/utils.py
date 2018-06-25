@@ -63,7 +63,7 @@ def generate_email(preview_text=None,
     @body This might make the if on the second and 4th line useless.
 
     """
-    return render_template("email_template.html",
+    return render_template("email/generic.html",
                            preview_text=preview_text,
                            has_top_text=has_top_text,
                            line1=line1,

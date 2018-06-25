@@ -10,3 +10,4 @@ Flask-Babel
 python-decouple
 nose
 flake8
+itsdangerous

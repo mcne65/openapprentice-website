@@ -1,9 +1,9 @@
-{% extends "main.html" %}
+{% extends "main/main.html" %}
 {% block head %}
     <title>{{ gettext('OpenApprentice Register') }}</title>
 {% endblock %}
 {% block body %}
-    {% from "_formhelpers.html" import render_field %}
+    {% from "utils/_formhelpers.html" import render_field %}
     <form method=post id="register-form">
         <div class="register">
             <div class="register-screen">

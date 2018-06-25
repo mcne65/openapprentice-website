@@ -1,4 +1,4 @@
-{% extends "main.html" %}
+{% extends "main/main.html" %}
 {% block body %}
 
     <style>
@@ -96,6 +96,18 @@
                     <p class="title">{{ gettext('DevOps') }}</p>
                     <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                     <p>akash@openapprentice.org</p>
+                    <p><button class="button">Contact</button></p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <img src="{{ url_for("static", filename="images/vignesh-joglekar.jpg") }}" alt="Vignesh" style="width:100%">
+                <div class="container">
+                    <h2>Vignesh Joglekar</h2>
+                    <p class="title">{{ gettext('TBD') }}</p>
+                    <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                    <p>vigneshjoglekar4@gmail.com</p>
                     <p><button class="button">Contact</button></p>
                 </div>
             </div>

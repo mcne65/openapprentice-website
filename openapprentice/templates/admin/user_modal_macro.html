@@ -179,11 +179,11 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" id="button-delete-{{ user.uuid }}" onclick="var r = confirm('Are you sure you want to delete {{ user.email }} ({{ user.uuid }})?');if (r == true){window.location.replace('/users/delete/{{ user.uuid }}');}">Delete
+                    <button type="button" class="btn btn-danger" id="button-delete-{{ user.uuid }}" onclick="var r = confirm('Are you sure you want to delete {{ user.email }} ({{ user.uuid }})?');if (r == true){window.location.replace('/admin/users/delete/{{ user.uuid }}');}">Delete
                         <i class="fas fa-user-times"></i>
                     </button>
                     {% if user.scope != "admin" %}
-                        <button type="button" class="btn btn-warning" id="button-promote-{{ user.uuid }}" onclick="window.location.replace('/users/promote/{{ user.uuid }}');">Promote
+                        <button type="button" class="btn btn-warning" id="button-promote-{{ user.uuid }}" onclick="var r = confirm('Are you sure you want to promote {{ user.email }} ({{ user.uuid }}) as an admin?');if (r == true){window.location.replace('/admin/users/promote/{{ user.uuid }}');}">Promote
                             <i class="fas fa-arrow-up"></i>
                         </button>
                     {% endif %}

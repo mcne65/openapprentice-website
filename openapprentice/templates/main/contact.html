@@ -1,6 +1,6 @@
-{% extends "main.html" %}
+{% extends "main/main.html" %}
 {% block body %}
-    {% from "_formhelpers.html" import render_field %}
+    {% from "utils/_formhelpers.html" import render_field %}
     <form method=post action='/ContactUs' id="contact-form">
         <div class="contact" id="page-wrapper">
             <div class="contact-screen">
