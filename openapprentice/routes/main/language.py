@@ -18,7 +18,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-from flask import session, redirect, request, url_for, g
+from flask import session, redirect, request, url_for, g, flash
 
 from flask_login import current_user
 
@@ -37,6 +37,7 @@ def change_lang(lang):
     """
 
     session['lang'] = lang
+    flash("Changed lang to {}".format(lang), "info")
     return redirect(request.referrer or url_for("home"))
 
 

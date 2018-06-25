@@ -90,6 +90,26 @@
                 */
                 height: 245px;
             }
+            .flash-success{
+                background-color: rgba(6, 171, 0, 0.64);
+                color: rgb(6, 118, 0);
+            }
+            .flash-info{
+                background-color: rgba(3, 9, 155, 0.64);
+                color: rgba(3, 7, 133, 0.78);
+            }
+            .flash-warning{
+                background-color: rgba(156, 45, 0, 0.62);
+                color: rgb(156, 45, 0);
+            }
+            .flash-error{
+                background-color: rgba(197, 10, 0, 0.67);
+                color: rgb(198, 10, 0);
+            }
+            .flash-danger{
+                background-color: rgba(155, 8, 0, 0.67);
+                color: rgb(141, 7, 0);
+            }
         </style>
     </head>
 {% endblock %}
@@ -142,6 +162,23 @@
                         </div><!--/.nav-collapse -->
                     </div>
                 </nav>
+
+
+
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} alert-dismissible flash-{{ category }}" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <strong>{{ category|title }}: </strong> {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+
             {% endblock %}
 
             {% block sidenav %}

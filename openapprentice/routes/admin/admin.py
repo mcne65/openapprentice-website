@@ -55,6 +55,7 @@ def user_list():
     id_list = []
     for user in User.select():
         id_list.append(user.uuid)
+    # flash("Rendered {} users.".format(len(id_list)), "info")
     return render_template("admin/user_list.html", get_user=get_user, id_list=id_list)
 
 
@@ -101,6 +102,7 @@ def admin_new_user():
         user.confirmed_on = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
         user.confirmed_by = "admin"
         user.save()
+        flash("Created new user {}".format(email), "success")
         return redirect(url_for('user_list'))
     return render_template('admin/admin_new_user.html', form=form)
 
@@ -120,9 +122,11 @@ def admin_delete_user(uuid):
     """
     user = get_user(uuid)
     if user.email != "admin@openapprentice.org" or current_user.uuid != user.uuid:
+        email = user.email
         user.delete_instance()
+        flash("Successfully deleted user {}.".format(email), "success")
     else:
-        flash("This user cannot be deleted", category="error")
+        flash("This user cannot be deleted", "error")
     return redirect(url_for("user_list"))
 
 
@@ -139,4 +143,7 @@ def admin_promote_user(uuid):
     if user.scope != "admin":
         user.scope = "admin"
         user.save()
+        flash("Successfully promoted {} to administrator.".format(user.email), "success")
+    else:
+        flash("Sorry, this user is already an admin", "warning")
     return redirect(url_for("user_list"))

@@ -46,8 +46,8 @@ def login():
         user.save()
         user = UserLoginFlask(user.uuid)
         login_user(user)
+        flash("Successfully logged in !", "success")
         if not user.is_confirmed:
-            flash("Sorry, you need to confirm your email adress {}.".format(user.email))
             return redirect(url_for("unconfirmed"))
         next_url = request.args.get('next')
         if not is_safe_url(next_url):
@@ -78,5 +78,5 @@ def logout():
     session.pop('user_id', None)
     session.pop('access_token', None)
     session.clear()
-
+    flash("Successfully logged out ! See you soon !", "info")
     return redirect(url_for("home"))

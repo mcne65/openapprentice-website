@@ -20,7 +20,7 @@
 
 from datetime import datetime
 
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, flash
 
 from openapprentice import application
 from openapprentice.forms import contact
@@ -124,5 +124,6 @@ def contact_us():
             line4=info
         )
         send_email("contact@openapprentice.org", "New message from {} {}".format(first_name, last_name), html_email)
+        flash("Email sent ! We'll get back to you shortly !", "success")
         return redirect(url_for("home"))
     return render_template("main/contact.html", form=form)

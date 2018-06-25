@@ -86,7 +86,7 @@ def confirm_email(token):
             BadTimeSignature,
             SignatureExpired,
             BadPayload):
-        flash('The confirmation link is invalid or has expired.', 'danger')
+        flash('The confirmation link is invalid or has expired.', 'error')
         return redirect(url_for("login"))
     user = get_user(email)
     if user.is_confirmed:
@@ -135,7 +135,7 @@ def resend_confirmation():
     )
     send_email(current_user.email, "Confirm your account - OpenApprentice", html_email)
 
-    flash('A new confirmation email has been sent.', 'success')
+    flash('A new confirmation email has been sent.', 'info')
     return redirect(url_for('unconfirmed'))
 
 # @todo: Make it so email template can be translated too

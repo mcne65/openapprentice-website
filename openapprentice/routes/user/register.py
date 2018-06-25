@@ -18,7 +18,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-from flask import session, redirect, url_for, render_template
+from flask import session, redirect, url_for, render_template, flash
 
 from openapprentice import application
 from openapprentice.forms.login import RegistrationForm
@@ -58,6 +58,6 @@ def register():
             has_bottom_text=False,
         )
         send_email(user.email, "Confirm your account - OpenApprentice", html_email)
-
+        flash("Thanks for creating your account ! Please check your emails for a confirmation link !", "success")
         return redirect(url_for('login'))
     return render_template('user/register.html', form=form)
