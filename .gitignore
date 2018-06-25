@@ -106,3 +106,10 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+.idea/
+bin/
+include/
+local/
+pip-selfcheck.json
+man/

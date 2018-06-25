@@ -1,0 +1,57 @@
+{% extends "main/main.html" %}
+{% block head %}
+    <title>{{ gettext('OpenApprentice Register') }}</title>
+{% endblock %}
+{% block body %}
+    {% from "utils/_formhelpers.html" import render_field %}
+    <form method=post id="register-form">
+        <div class="register">
+            <div class="register-screen">
+                <div class="app-title">
+                    <h1>{{ gettext('Register') }}</h1>
+                </div>
+                <div class="register-form">
+                    {{ render_field(form.email) }}
+                    {{ render_field(form.password) }}
+                    <button type="button" id="eye">
+                        <img src="https://cdn0.iconfinder.com/data/icons/feather/96/eye-16.png" alt="eye" />
+                    </button>
+                    {{ render_field(form.confirm) }}
+                    {{ form.csrf_token }}
+                </div>
+                <p><input type=submit value="{{ gettext('Register') }}"class="btn-register">
+                <p><input type='reset' value="{{ gettext('Reset') }}" name='reset' onclick="return resetForm(this.form);" class="btn-clear">
+                    <br>
+            </div>
+        </div>
+    </form>
+    <form action="{{ url_for("home") }}" method="GET">
+        <input type="submit" value="{{ gettext('Cancel') }}" class="btn-cancel btn-primary btn-large btn-block" >
+    </form>
+    <script type="text/javascript">
+        function resetForm() {
+            document.getElementById("register-form").reset();
+        }
+
+        function show() {
+            var p = document.getElementById('password');
+            p.setAttribute('type', 'text');
+        }
+        function hide() {
+            var p = document.getElementById('password');
+            p.setAttribute('type', 'password');
+        }
+        var pwShown = 0;
+        document.getElementById("eye").addEventListener("click", function () {
+            if (pwShown == 0) {
+                pwShown = 1;
+                show();
+            } else {
+                pwShown = 0;
+                hide();
+            }
+        }, false);
+    </script>
+{% endblock %}
+
+<!--     <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p> -->

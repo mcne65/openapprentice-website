@@ -1,7 +1,7 @@
-![OpenApprenticeFoundationLogo](/images/openapprentice-foundation-logo.png)
+![OpenApprenticeFoundationLogo](/openapprentice/static/images/logofinal.jpg)
 
 
-# The OpenApprentice Foundation
+# The OpenApprentice Foundation [![Build Status](https://travis-ci.org/OpenApprenticeFoundation/openapprentice-website.svg?branch=master)](https://travis-ci.org/OpenApprenticeFoundation/openapprentice-website)
 [![GitHub last commit](https://img.shields.io/github/last-commit/OpenApprenticeFoundation/openapprentice-website.svg)](https://github.com/OpenApprenticeFoundation/openapprentice-website/commits/master)
 [![GitHub commit activity the past week, 4 weeks, year](https://img.shields.io/github/commit-activity/w/OpenApprenticeFoundation/openapprentice-website.svg)](https://github.com/OpenApprenticeFoundation/openapprentice-website/commits/master)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
@@ -56,9 +56,48 @@ The above are certain skills we are in need: for teachers (of any discipline), f
 We are developing a Code of Conduct unique to OpenApprentice but inspired by the leadership of such organizational examples, including [Python](https://www.python.org/psf/codeofconduct/), [Ubuntu](https://www.ubuntu.com/community/code-of-conduct) and others who have come before us with their examples and built purposeful thriving and effective organizations and communities.
 
 
-## Founded by David Kartuzinski
+## Translating
 
-Founded in April 2018 to accomplish the aforementioned goals, and definitely not Founded alone.
+We are always in search for new languages to support !
+Please follow the [Babel Tutorial](https://pythonhosted.org/Flask-Babel/#translating-applications).
+
+### To update existing translation
+First, Clone the repository and go into it.
+Then,  You need to extract the strings to translate:
+```bash
+pybabel extract -F babel.cfg -o messages.pot .
+```
+Once extracted, merge the translations to update if some strings are missing:
+```bash
+pybabel update -i messages.pot -d openapprentice/translations
+```
+Then, you can start updating your desired translation in `openapprentice/translation/<lang_code>/LC_MESSAGES/messages.po`
+
+Once done, Compile your changes with
+```bash
+pybabel compile -d openapprentice/translations
+```
+And test them. Once you are sure everything works push the updated `messages.po` to a new branch and start a PR!
+
+### To create a new translation
+Clone the repository and `cd` into it.
+
+You first need to extract the strings to translate:
+```bash
+pybabel extract -F babel.cfg -o messages.pot .
+```
+
+Then, Initialize a new supported language by running
+```bash
+pybabel init -i messages.pot -d openapprentice/translations -l LANG_CODE
+```
+With `LANG_CODE` being the language code. Example: `fr` for French or `de` for German
+
+You can now start translating the file located in `openapprentice/translation/<lang_code>/LC_MESSAGES/messages.po`.
+Once done, make sure you add a flag for the language you edited to `openapprentice/static/images/flag-<lang_code>.png`
+and edit the file `lang.ini`.
+
+Once all of this is done, push this to a new branch and start a PR !
 
 
 ## License
@@ -68,13 +107,3 @@ We continue to receive advice as to the best license for our project. We intend 
 June 5, 2018
 
 [GNU General Public License v3.0](https://github.com/OpenApprenticeFoundation/openapprentice-website/blob/master/LICENSE)
-
-
-
-
-
-
-
-
-
-

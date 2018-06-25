@@ -1,0 +1,41 @@
+os:
+  - linux
+
+services:
+  - mysql
+
+addons:
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
+
+dist: trusty
+sudo: required
+
+language: python
+
+python:
+  - 2.7
+  - 3.6
+
+install: pip install -r requirements.txt
+
+env:
+  - OA_DB_USER=travis OA_DB_PASSWD=""
+
+before_script:
+  - export FLASK_APP="$TRAVIS_BUILD_DIR/application.py"
+  - export FLASK_DEBUG=1
+  - mysql -e 'create database oa_users;'
+
+script: nosetests && flake8
+
+notifications:
+  slack: openapprentice:RyaCVPksPhA88F4shNtXAwlT
+  email:
+    recipients:
+      - travis@openapprentice.org
+    on_success: change
+    on_failure: always

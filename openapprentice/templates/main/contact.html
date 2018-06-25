@@ -1,0 +1,29 @@
+{% extends "main/main.html" %}
+{% block body %}
+    {% from "utils/_formhelpers.html" import render_field %}
+    <form method=post action='/ContactUs' id="contact-form">
+        <div class="contact" id="page-wrapper">
+            <div class="contact-screen">
+                <div class="app-title">
+                    <h1>{{ gettext('Contact us') }}</h1>
+                </div>
+                <div class="contact-form">
+                    {{ render_field(form.first_name) }}
+                    {{ render_field(form.last_name) }}
+                    {{ render_field(form.email) }}
+                    <!-- @todo: Make the message field bigger-->
+                    {{ render_field(form.message) }}
+                    {{ form.csrf_token }}
+                </div>
+                <p><input type=submit value=Send class="btn-contact">
+                <p><input type='reset' value='Reset' name='reset' onclick="resetForm()" class="btn-clear">
+                <br>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+        function resetForm() {
+            document.getElementById("contact-form").reset();
+        }
+    </script>
+{% endblock %}

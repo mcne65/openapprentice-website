@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+
+{% block head %}
+    <head>
+        <title>OpenApprentice</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="OpenApprentice">
+        <meta name="author" content="OpenApprentice Foundation">
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/main.css") }}">
+        <link rel="stylesheet" href="{{ url_for("static", filename="css/footer/style.css") }}">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+        <link rel="icon" href="../../static/images/favicon.png">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    </head>
+    <style>
+
+        .languagepicker {
+            background-color: #FFF;
+            display: inline-block;
+            padding: 0;
+            height: 40px;
+            overflow: hidden;
+            transition: all .3s ease;
+            margin: 0 50px 10px 0;
+            vertical-align: top;
+            float: left;
+        }
+
+        .languagepicker:hover {
+            /* don't forget the 1px border */
+            height: 81px;
+        }
+
+        .languagepicker a{
+            color: #000;
+            text-decoration: none;
+        }
+
+        .languagepicker li {
+            display: block;
+            padding: 0px 20px;
+            line-height: 40px;
+            border-top: 1px solid #EEE;
+        }
+
+        .languagepicker li:hover{
+            background-color: #EEE;
+        }
+
+        .languagepicker a:first-child li {
+            border: none;
+            background: #FFF !important;
+        }
+
+        .languagepicker li img {
+            margin-right: 5px;
+        }
+
+        .roundborders {
+            border-radius: 5px;
+        }
+
+        .large:hover {
+            /*
+            don't forget the 1px border!
+            The first language is 40px heigh,
+            the others are 41px
+            */
+            height: 245px;
+        }
+        .flash-success{
+            background-color: rgba(6, 171, 0, 0.64);
+            color: rgb(6, 118, 0);
+        }
+        .flash-info{
+            background-color: rgba(3, 9, 155, 0.64);
+            color: rgba(3, 7, 133, 0.78);
+        }
+        .flash-warning{
+            background-color: rgba(156, 45, 0, 0.62);
+            color: rgb(156, 45, 0);
+        }
+        .flash-error{
+            background-color: rgba(197, 10, 0, 0.67);
+            color: rgb(198, 10, 0);
+        }
+        .flash-danger{
+            background-color: rgba(155, 8, 0, 0.67);
+            color: rgb(141, 7, 0);
+        }
+
+    </style>
+{% endblock %}
+
+{% block navbar %}
+    <div class="navigation-bar">
+
+        <div id="navigation-container">
+            <ul>
+                <li><a href="{{ url_for("home") }}"><img src="{{ url_for("static", filename="images/logo-square.png") }}" width="70" height="70" alt="OpenApprentice"></a></li>
+                <li><a href="{{ url_for("home") }}">{{ gettext('Home') }}</a></li>
+                <li><a href="{{ url_for("apprentice_system") }}">{{ gettext('Apprentice System') }}</a></li>
+                <li><a href="{{ url_for("learning") }}">{{ gettext('Learning Path') }}</a></li>
+                <li><a href="{{ url_for("teachers") }}">{{ gettext('For Teachers') }}</a></li>
+                <li><a href="{{ url_for("sponsors") }}">{{ gettext('For Patrons & Sponsors') }}</a></li>
+                <li><a href="{{ url_for("recruiters") }}">{{ gettext('For Recruiters') }}</a></li>
+                <li><a href="{{ url_for("mission") }}">{{ gettext('Our mission') }}</a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for("logout") }}">{{ gettext('Logout') }}</a></li>
+                {% else %}
+                    <li><a href="{{ url_for("login") }}">{{ gettext('Login') }}</a></li>
+                {% endif %}
+                <!-- <li><a href="#">Search</a></li> -->
+            </ul>
+        </div>
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible flash-{{ category }}" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>{{ category|title }}: </strong> {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+{% endblock %}
+
+{% block body %}
+
+
+
+{% endblock %}
+
+{% block footer %}
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 footer-about wow fadeInUp">
+                        <img class="logo-footer" src="{{ url_for("static", filename="images/favicon.png") }}" alt="logo-footer" data-at2x="assets/img/logo.png">
+                        <p>
+                            LOREM IPSUM THIS IS WHAT WE DO.
+                        </p>
+                        <p><a href="{{ url_for("team") }}">{{ gettext('Our Team') }}</a></p>
+                    </div>
+                    <div class="col-md-4 offset-md-1 footer-contact wow fadeInDown">
+                        <h3>Contact</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Paris 75000 France</p>
+                        <!--<p><i class="fas fa-phone"></i> Phone: (0039) 333 12 68 347</p>-->
+                        <p><i class="fas fa-envelope"></i> Email: <a href="mailto:contact@openapprentice.org">contact@openapprentice.org</a></p>
+                        <!--<p><i class="fab fa-skype"></i> Skype: you_online</p>-->
+                    </div>
+                    <div class="col-md-4 footer-links wow fadeInUp">
+                        <div class="row">
+                            <div class="col">
+                                <h3>{{ gettext('Links') }}</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><a class="scroll-link" href="#top-content">{{ gettext('Home') }}</a></p>
+                                <p><a href="{{ url_for("apprentice_system") }}">{{ gettext('Apprentice System') }}</a></p>
+                                <p><a href="{{ url_for("learning") }}">{{ gettext('Learning Path') }}</a></p>
+                                <p><a href="{{ url_for("teachers") }}">{{ gettext('For Teachers') }}</a></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><a href="{{ url_for("sponsors") }}">{{ gettext('For Patrons & Sponsors') }}</a></p>
+                                <p><a href="{{ url_for("recruiters") }}">{{ gettext('For Recruiters') }}</a></p>
+                                <p><a href="{{ url_for("mission") }}">{{ gettext('Our mission') }}</a></p>
+                                <p><a href="{{ url_for("contact_us") }}">{{ gettext('Contact us') }}</a></p>
+                                <!-- <p><a href="{{ url_for("team") }}">Terms & Privacy</a></p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 footer-copyright">
+                        {{ gettext('Made with ❤️ in Paris by') }} <a href="https://openapprentice.org" target="_blank">{{ gettext('The OpenApprentice Foundation') }}</a>. <a href="{{ url_for("contact_us") }}">{{ gettext('Contact us') }}</a>
+                    </div>
+                    <div class="col-md-6 footer-social">
+                        <!-- <a href="#"><i class="fab fa-facebook-f"></i></a> -->
+                        <a href="https://twitter.com/open_apprentice" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://github.com/OpenApprenticeFoundation" target="_blank"><i class="fab fa-github"></i></a>
+                        <!-- <a href="#"><i class="fab fa-google-plus-g"></i></a> -->
+                        <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
+                        <!-- <a href="#"><i class="fab fa-pinterest"></i></a> -->
+                        <ul class="languagepicker roundborders large">
+                            <a href="lang/{{ g.current_lang }}"><li><img src="static/images/flag-{{ g.current_lang }}.png"/>{{ g.current_lang }}</li></a>
+                            {% for lang in g.available_lang %}
+                                {% if lang != g.current_lang %}
+                                    <a href="lang/{{ lang }}"><li><img src="static/images/flag-{{ lang }}.png"/>{{ lang }}</li></a>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+</html>

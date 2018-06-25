@@ -1,0 +1,50 @@
+{% extends "admin/admin.html" %}
+{% block body %}
+    {% from "utils/_formhelpers.html" import render_field %}
+    <form method=post id="new-user-form">
+        <div class="new-user">
+            <div class="new-user-screen">
+                <div class="app-title">
+                    <h1>{{ gettext('New User') }}</h1>
+                </div>
+                <div class="new-user-form">
+                    {{ render_field(form.email) }}
+                    {{ render_field(form.password) }}
+                    <button type="button" id="eye">
+                        <img src="https://cdn0.iconfinder.com/data/icons/feather/96/eye-16.png" alt="eye" />
+                    </button>
+                    {{ render_field(form.confirm) }}
+                    {{ render_field(form.disable_secure_password) }}
+                    {{ form.csrf_token }}
+                </div>
+                <p><input type=submit value="{{ gettext('Create New User') }}"class="btn-new-user-register">
+                <p><input type='reset' value="{{ gettext('Reset') }}" name='reset' onclick="return resetForm(this.form);" class="btn-clear">
+                    <br>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+        function resetForm() {
+            document.getElementById("new-user-form").reset();
+        }
+
+        function show() {
+            var p = document.getElementById('password');
+            p.setAttribute('type', 'text');
+        }
+        function hide() {
+            var p = document.getElementById('password');
+            p.setAttribute('type', 'password');
+        }
+        var pwShown = 0;
+        document.getElementById("eye").addEventListener("click", function () {
+            if (pwShown == 0) {
+                pwShown = 1;
+                show();
+            } else {
+                pwShown = 0;
+                hide();
+            }
+        }, false);
+    </script>
+{% endblock %}

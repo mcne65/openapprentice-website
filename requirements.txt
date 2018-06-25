@@ -1,0 +1,13 @@
+Flask
+flask_wtf
+wtforms
+flask_mail
+mysqlclient
+flask-login
+peewee
+werkzeug
+Flask-Babel
+python-decouple
+nose
+flake8
+itsdangerous
