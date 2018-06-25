@@ -221,7 +221,7 @@ def confirm_token(token, expiration=3600):
             max_age=expiration
         )
     except (BadHeader, BadData, BadSignature, BadTimeSignature,
-            SignatureExpired, BadPayload) as e:
+            SignatureExpired, BadPayload):
         return False
     return email
 
