@@ -27,9 +27,12 @@ from flask_login import current_user
 from openapprentice import application
 from openapprentice.models.user import get_user, User, create_user
 from openapprentice.forms.user import NewUserForm
+from openapprentice.decorators import admin_only, confirmed_required
 
 
 @application.route("/admin")
+@admin_only
+@confirmed_required
 def admin_dashboard():
     """
     Renders the home of the admin dashboard.
@@ -40,6 +43,8 @@ def admin_dashboard():
 
 
 @application.route("/admin/users")
+@admin_only
+@confirmed_required
 def user_list():
     """
     Displays the user list.
@@ -54,6 +59,8 @@ def user_list():
 
 
 @application.route("/admin/projects")
+@admin_only
+@confirmed_required
 def projects():
     """
     Renders the project list for the admin dashboard.
@@ -62,6 +69,8 @@ def projects():
 
 
 @application.route("/admin/stats")
+@admin_only
+@confirmed_required
 def stats():
     """
     Renders the stats for the admin dashboard
@@ -70,6 +79,8 @@ def stats():
 
 
 @application.route("/admin/new_user", methods=['GET', 'POST'])
+@admin_only
+@confirmed_required
 def admin_new_user():
     """
     This view is called to create a new user.
@@ -95,6 +106,8 @@ def admin_new_user():
 
 
 @application.route("/admin/users/delete/<uuid>")
+@admin_only
+@confirmed_required
 def admin_delete_user(uuid):
     """
     This view is called with a user uuid to delete.
@@ -114,6 +127,8 @@ def admin_delete_user(uuid):
 
 
 @application.route("/admin/users/promote/<uuid>")
+@admin_only
+@confirmed_required
 def admin_promote_user(uuid):
     """
     This view is used to promote a user to the rank of admin.
