@@ -24,7 +24,7 @@ from wtforms import ValidationError
 from openapprentice.forms.validators import check_password_strengh, validate_email_exists, validate_is_email_available
 from openapprentice.forms.validators import validate_valid_email
 from openapprentice.models.user import create_user
-from openapprentice.utils import get_random_string
+from openapprentice.utils.strings import get_random_string
 
 
 random_email = get_random_string() + "@" + get_random_string() + ".com"

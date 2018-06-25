@@ -20,19 +20,55 @@
 This file contains all utility function, classes and variables used throughout the program
 """
 
-import string
-import random
 import re
-import sys
 
-from flask import render_template, request
+from flask import render_template
+
 from flask_mail import Message
-from openapprentice import application, mail
+from itsdangerous import URLSafeTimedSerializer
+from itsdangerous import BadHeader, BadData, BadSignature, BadTimeSignature, SignatureExpired, BadPayload
 
-if sys.version_info > (3, 0):
-    from urllib.parse import urlparse, urljoin
-else:
-    from urlparse import urlparse, urljoin
+from openapprentice import application
+from openapprentice import mail
+
+
+def generate_confirmation_token(email):
+    """
+    This view will generate a confirmation token
+
+    :param email: The email to serialize in the token
+
+    :return: Returns a serialized token
+    """
+
+    serializer = URLSafeTimedSerializer(application.config['SECRET_KEY'])
+    email_token = serializer.dumps(
+        email, salt=application.config['SECURITY_PASSWORD_SALT'])
+    return email_token
+
+
+def confirm_token(token, expiration=3600):
+    """
+    This function will check if the token has expired or not.
+
+    :param token: The token to check
+    :param expiration: How old is the token allowed to be
+
+    :return: Returns False if the token isn't accepted, returns the email
+     otherwise
+    """
+
+    serializer = URLSafeTimedSerializer(application.config['SECRET_KEY'])
+    try:
+        email = serializer.loads(
+            token,
+            # TODO: Secure password salt in env
+            salt=application.config['SECURITY_PASSWORD_SALT'],
+            max_age=expiration
+        )
+    except (BadHeader, BadData, BadSignature, BadTimeSignature, SignatureExpired, BadPayload):
+        return False
+    return email
 
 
 def generate_email(preview_text=None,
@@ -94,18 +130,6 @@ def send_email(to, subject, template):
     mail.send(msg)
 
 
-def is_safe_url(target):
-    """
-    Tests if the url to redirect to is safe
-    :param target: the url to redirect to
-    :return: True if the url is safe, False otherwise
-    """
-
-    ref_url = urlparse(request.host_url)
-    test_url = urlparse(urljoin(request.host_url, target))
-    return test_url.scheme in ('http', 'https') and ref_url.netloc == test_url.netloc
-
-
 def is_valid_email(email):
     """
     Tests with a regex if the email passed is valid
@@ -116,47 +140,3 @@ def is_valid_email(email):
         if re.match("^.+@([?)[a-zA-Z0-9-.]+.([a-zA-Z]{2,3}|[0-9]{1,3})(]?))$", email) is not None:
             return True
     return False
-
-
-def password_check(password):
-    """
-    Verify the strength of 'password'
-    Returns a dict indicating the wrong criteria
-    A password is considered strong if:
-        8 characters length or more
-        1 digit or more
-        1 symbol or more
-        1 uppercase letter or more
-        1 lowercase letter or more
-    """
-
-    # calculating the length
-    length_error = len(password) < 8
-
-    # searching for digits
-    digit_error = re.search(r"\d", password) is None
-
-    # searching for uppercase
-    uppercase_error = re.search(r"[A-Z]", password) is None
-
-    # searching for lowercase
-    lowercase_error = re.search(r"[a-z]", password) is None
-
-    # searching for symbols
-    symbol_error = re.search(r"[ !#$%&'()*+,-./[\\\]^_`{|}~"+r'"]', password) is None
-
-    # overall result
-    password_ok = not (length_error or digit_error or uppercase_error or lowercase_error or symbol_error)
-
-    return {
-        'password_ok': password_ok,
-        'length_error': length_error,
-        'digit_error': digit_error,
-        'uppercase_error': uppercase_error,
-        'lowercase_error': lowercase_error,
-        'symbol_error': symbol_error,
-    }
-
-
-def get_random_string(size=8, chars=string.ascii_uppercase + string.digits):
-    return ''.join(random.choice(chars) for x in range(size))

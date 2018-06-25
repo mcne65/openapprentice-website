@@ -22,51 +22,11 @@ from datetime import datetime
 
 from flask import render_template, redirect, url_for, flash
 from flask_login import login_required, current_user
-from itsdangerous import URLSafeTimedSerializer
 from itsdangerous import BadHeader, BadData, BadSignature, BadTimeSignature, SignatureExpired, BadPayload
 
 from openapprentice import application
-from openapprentice.utils import generate_email, send_email
+from openapprentice.utils.email import generate_email, send_email, confirm_token, generate_confirmation_token
 from openapprentice.models.user import get_user
-
-
-def generate_confirmation_token(email):
-    """
-    This view will generate a confirmation token
-
-    :param email: The email to serialize in the token
-
-    :return: Returns a serialized token
-    """
-
-    serializer = URLSafeTimedSerializer(application.config['SECRET_KEY'])
-    email_token = serializer.dumps(
-        email, salt=application.config['SECURITY_PASSWORD_SALT'])
-    return email_token
-
-
-def confirm_token(token, expiration=3600):
-    """
-    This function will check if the token has expired or not.
-
-    :param token: The token to check
-    :param expiration: How old is the token allowed to be
-
-    :return: Returns False if the token isn't accepted, returns the email
-     otherwise
-    """
-
-    serializer = URLSafeTimedSerializer(application.config['SECRET_KEY'])
-    try:
-        email = serializer.loads(
-            token,
-            # TODO: Secure password salt in env
-            salt=application.config['SECURITY_PASSWORD_SALT'],
-            max_age=expiration
-        )
-    except (BadHeader, BadData, BadSignature, BadTimeSignature, SignatureExpired, BadPayload):
-        return False
-    return email
 
 
 @application.route('/confirm/<token>')

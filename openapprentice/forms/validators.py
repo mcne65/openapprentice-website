@@ -10,7 +10,7 @@ from flask_babel import gettext
 from openapprentice.models.user import get_user
 from openapprentice.errors import notfound
 from werkzeug.security import check_password_hash
-from openapprentice.utils import password_check
+from openapprentice.utils.password import password_check
 from wtforms import ValidationError
 
 

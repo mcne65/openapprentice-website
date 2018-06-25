@@ -24,7 +24,7 @@ from flask import render_template, redirect, url_for, flash
 
 from openapprentice import application
 from openapprentice.forms import contact
-from openapprentice.utils import generate_email, send_email
+from openapprentice.utils.email import generate_email, send_email
 
 
 @application.route('/index')

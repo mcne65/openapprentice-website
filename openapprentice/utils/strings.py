@@ -16,16 +16,21 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+This file contains all utility function, classes and variables used throughout the program
 """
 
-from nose.tools import assert_true, assert_false
-
-from openapprentice.utils import is_valid_email, get_random_string
-
-
-random_email = get_random_string() + "@" + get_random_string() + ".com"
+from string import ascii_uppercase, digits
+import random
 
 
-def test_is_valid_email():
-    assert_true(is_valid_email(random_email))
-    assert_false(is_valid_email(random_email[:-3]))
+def get_random_string(size=8, chars=ascii_uppercase + digits):
+    """
+    Generates a random string
+
+    :param size: The size of the string to generate
+    :param chars: The characters used to make the string
+
+    :return: Returns a random string of size `size` and composed of chars `chars`
+    """
+    return ''.join(random.choice(chars) for x in range(size))

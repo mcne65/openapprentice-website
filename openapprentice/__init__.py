@@ -83,7 +83,7 @@ user_db = peewee.MySQLDatabase(
 
 babel = Babel(application)
 
-from openapprentice.routes.admin import admin
+from openapprentice.routes.admin import main, user, project, stats
 from openapprentice.routes.email import email
 from openapprentice.routes.main import language, main
 from openapprentice.routes.user import login, register, manager

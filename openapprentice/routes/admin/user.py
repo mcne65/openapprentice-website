@@ -30,18 +30,6 @@ from openapprentice.forms.user import NewUserForm
 from openapprentice.decorators import admin_only, confirmed_required
 
 
-@application.route("/admin")
-@admin_only
-@confirmed_required
-def admin_dashboard():
-    """
-    Renders the home of the admin dashboard.
-    This might in the future render some statistics etc
-    """
-
-    return render_template("admin/admin.html")
-
-
 @application.route("/admin/users")
 @admin_only
 @confirmed_required
@@ -57,26 +45,6 @@ def user_list():
         id_list.append(user.uuid)
     # flash("Rendered {} users.".format(len(id_list)), "info")
     return render_template("admin/user_list.html", get_user=get_user, id_list=id_list)
-
-
-@application.route("/admin/projects")
-@admin_only
-@confirmed_required
-def projects():
-    """
-    Renders the project list for the admin dashboard.
-    """
-    return render_template("admin/projects.html")
-
-
-@application.route("/admin/stats")
-@admin_only
-@confirmed_required
-def stats():
-    """
-    Renders the stats for the admin dashboard
-    """
-    return render_template("admin/stats.html")
 
 
 @application.route("/admin/new_user", methods=['GET', 'POST'])

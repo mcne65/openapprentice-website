@@ -23,8 +23,7 @@ from flask import session, redirect, url_for, render_template, flash
 from openapprentice import application
 from openapprentice.forms.login import RegistrationForm
 from openapprentice.models.user import create_user
-from openapprentice.utils import generate_email, send_email
-from openapprentice.routes.email.email import generate_confirmation_token
+from openapprentice.utils.email import generate_email, send_email, generate_confirmation_token
 
 
 @application.route('/register', methods=['GET', 'POST'])

@@ -26,7 +26,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 from openapprentice import application
 from openapprentice.models.user import User, UserLoginFlask, get_user
 from openapprentice.forms.login import LoginForm
-from openapprentice.utils import is_safe_url
+from openapprentice.utils.url import is_safe_url
 
 
 @application.route('/login', methods=['POST', 'GET'])
